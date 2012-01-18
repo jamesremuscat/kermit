@@ -36,7 +36,10 @@ public final class Kermit extends PircBot implements SVNLogListener {
         final String header = extractHeader(entry);
         final String path = extractPaths(entry);
         sendMessage(chan, header + extractLogMessage(entry));
-        sendMessage(chan, header + " in " + path);
+
+        final long numSpaces = Math.round(Math.floor(Math.log10(entry.getRevision())) + 1);
+
+        sendMessage(chan, StringUtils.spaces((int) (numSpaces + 1)) + Colors.DARK_GRAY + " in " + path + Colors.NORMAL);
       }
     }
   }
@@ -64,7 +67,9 @@ public final class Kermit extends PircBot implements SVNLogListener {
       path = (String) changedPaths.toArray()[0];
     }
     else if (changedPaths.size() > 1) {
-      path = changedPaths.toArray()[0] + " (plus " + (changedPaths.size() - 1) + " more)";
+      final String commonPrefix = StringUtils.getCommonPrefix(changedPaths.toArray(new String[1]));
+
+      path = changedPaths.size() + " files under " + commonPrefix.substring(0, commonPrefix.lastIndexOf("/"));
     }
     else {
       path = "no files";
