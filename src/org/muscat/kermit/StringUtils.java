@@ -19,7 +19,7 @@ public class StringUtils {
       }
 
       for (int i = 2; i < strs.length; i++) {
-        while(maxCommon > 0 && strs[0].charAt(maxCommon - 1) != strs[i].charAt(maxCommon - 1)) {
+        while(maxCommon > 0 && (strs[i].length() < maxCommon || strs[0].charAt(maxCommon - 1) != strs[i].charAt(maxCommon - 1))) {
           maxCommon--;
         }
       }

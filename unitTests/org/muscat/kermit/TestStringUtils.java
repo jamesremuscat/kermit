@@ -14,6 +14,8 @@ public class TestStringUtils extends TestCase {
     assertEquals("ab", StringUtils.getCommonPrefix(new String[] {"abcdef", "abcfed", "ab11"}));
     assertEquals("", StringUtils.getCommonPrefix(new String[] {"abcdef", "ghjik", "lmnop"}));
 
+    assertEquals("abcd", StringUtils.getCommonPrefix(new String[] {"abcdef", "abcdef4444", "abcd"}));
+
   }
 
 }
