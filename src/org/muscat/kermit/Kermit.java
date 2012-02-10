@@ -15,9 +15,10 @@ import org.tmatesoft.svn.core.SVNLogEntry;
 public final class Kermit extends PircBot implements SVNLogListener {
 
   private static final int MAX_MESSAGE_LENGTH = 350;
-  private final WatchedPathsConfig _paths = new WatchedPathsConfig();
-  private final SVNLogWatcher _watcher;
 
+  private final WatchedPathsConfig _paths = new WatchedPathsConfig();
+
+  private final SVNLogWatcher _watcher;
 
   public Kermit(final String nick) throws SVNException {
     setName(nick);
@@ -28,11 +29,10 @@ public final class Kermit extends PircBot implements SVNLogListener {
     _watcher.addListener(this);
   }
 
-
   @Override
   public void logEntries(final Collection<SVNLogEntry> entries) {
-    for (SVNLogEntry entry : entries) {
-      for (String chan : getChannels()) {
+    for (final SVNLogEntry entry : entries) {
+      for (final String chan : getChannels()) {
         final String header = extractHeader(entry);
         final String path = extractPaths(entry);
         sendMessage(chan, header + extractLogMessage(entry));
@@ -44,7 +44,6 @@ public final class Kermit extends PircBot implements SVNLogListener {
     }
   }
 
-
   /**
    * @param entry
    * @return
@@ -52,7 +51,6 @@ public final class Kermit extends PircBot implements SVNLogListener {
   private String extractHeader(final SVNLogEntry entry) {
     return Colors.GREEN + "r" + entry.getRevision() + Colors.NORMAL + " by " + Colors.BOLD + entry.getAuthor() + Colors.NORMAL + ": ";
   }
-
 
   /**
    * @param entry
@@ -69,14 +67,13 @@ public final class Kermit extends PircBot implements SVNLogListener {
     else if (changedPaths.size() > 1) {
       final String commonPrefix = StringUtils.getCommonPrefix(changedPaths.toArray(new String[1]));
 
-      path = changedPaths.size() + " files under " + commonPrefix.substring(0, commonPrefix.lastIndexOf("/"));
+      path = changedPaths.size() + " files under " + commonPrefix;
     }
     else {
       path = "no files";
     }
     return path;
   }
-
 
   /**
    * @param entry
@@ -111,7 +108,7 @@ public final class Kermit extends PircBot implements SVNLogListener {
     String server = "irc.int.corefiling.com";
     String channel = "#botTest";
 
-    Properties properties = new Properties();
+    final Properties properties = new Properties();
     try {
       properties.load(new FileReader("kermit.properties"));
 
@@ -128,13 +125,13 @@ public final class Kermit extends PircBot implements SVNLogListener {
       }
 
     }
-    catch (Exception e1) {
+    catch (final Exception e1) {
       // do nothing, just use defaults
     }
 
-    Kermit bot = new Kermit(nick);
+    final Kermit bot = new Kermit(nick);
 
-    //bot.addTask(new DailySummaryTask(channel));
+    // bot.addTask(new DailySummaryTask(channel));
 
     try {
 
@@ -143,7 +140,7 @@ public final class Kermit extends PircBot implements SVNLogListener {
       bot.joinChannel(channel);
 
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       System.out.println("Bad things");
       e.printStackTrace();
     }
