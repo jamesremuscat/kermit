@@ -25,7 +25,7 @@ public final class Kermit extends PircBot implements SVNLogListener {
   }
 
   @Override
-  public void logEntries(final Collection<SVNLogEntry> entries) {
+  public synchronized void logEntries(final Collection<SVNLogEntry> entries) {
     for (final SVNLogEntry entry : entries) {
       for (final String chan : getChannels()) {
         final String header = extractHeader(entry);
