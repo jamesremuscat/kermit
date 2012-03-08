@@ -8,7 +8,6 @@ import java.util.Set;
 import org.jibble.pircbot.Colors;
 import org.jibble.pircbot.PircBot;
 import org.muscat.kermit.svn.SVNLogListener;
-import org.muscat.kermit.svn.SVNLogWatcher;
 import org.tmatesoft.svn.core.SVNException;
 import org.tmatesoft.svn.core.SVNLogEntry;
 
@@ -16,17 +15,13 @@ public final class Kermit extends PircBot implements SVNLogListener {
 
   private static final int MAX_MESSAGE_LENGTH = 350;
 
-  private final WatchedPathsConfig _paths = new WatchedPathsConfig();
-
-  private final SVNLogWatcher _watcher;
+  private final WatchedPathsConfig _paths;
 
   public Kermit(final String nick) throws SVNException {
     setName(nick);
     setLogin(nick);
+    _paths = new WatchedPathsConfig(this);
     new Thread(_paths, "Path config watcher").start();
-    _watcher = new SVNLogWatcher("https://svn-dev.int.corefiling.com/svn", _paths);
-    new Thread(_watcher, "SVN log watcher").start();
-    _watcher.addListener(this);
   }
 
   @Override
@@ -93,7 +88,7 @@ public final class Kermit extends PircBot implements SVNLogListener {
   @Override
   protected void onJoin(final String channel, final String sender, final String login, final String hostname) {
     super.onJoin(channel, sender, login, hostname);
-    sendMessage(channel, "Hey-ho everybody, the repository is at revision " + Colors.GREEN + _watcher.getLatestRevision() + Colors.NORMAL);
+    sendMessage(channel, "Hey-ho everybody!"); //, the repository is at revision " + Colors.GREEN + _watcher.getLatestRevision() + Colors.NORMAL);
   }
 
   /**
@@ -131,14 +126,9 @@ public final class Kermit extends PircBot implements SVNLogListener {
 
     final Kermit bot = new Kermit(nick);
 
-    // bot.addTask(new DailySummaryTask(channel));
-
     try {
-
       bot.connect(server);
-
       bot.joinChannel(channel);
-
     }
     catch (final Exception e) {
       System.out.println("Bad things");

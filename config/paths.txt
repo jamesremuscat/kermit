@@ -1,3 +1,3 @@
-devel
-web
-usr
+https://svn-dev.int.corefiling.com/svn/devel
+https://svn-dev.int.corefiling.com/svn/usr
+https://svn-rim.int.corefiling.com/svn/

@@ -6,11 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
+import org.muscat.kermit.svn.SVNLogListener;
+import org.muscat.kermit.svn.SVNLogWatcher;
+import org.tmatesoft.svn.core.SVNException;
+
 /**
- * Class that periodically reloads a list of watched SVN paths from a config file.
+ * Class that periodically reloads a list of watched SVN paths from a config file and maintains a collection of {@link SVNLogWatcher}s for each path.
  * @author jrem
  */
 public class WatchedPathsConfig implements Runnable {
@@ -23,6 +29,15 @@ public class WatchedPathsConfig implements Runnable {
    * The projects we are interested in watching.
    */
   private final Set<String> _watchedPaths = new LinkedHashSet<String>();
+
+  private final SVNLogListener _listener;
+
+  private final Map<String, SVNLogWatcher> _watchers = new LinkedHashMap<String, SVNLogWatcher>();
+
+  public WatchedPathsConfig(final SVNLogListener listener) {
+    _listener = listener;
+  }
+
 
   public synchronized Set<String> getWatchedPaths() {
     return Collections.unmodifiableSet(_watchedPaths);
@@ -58,12 +73,25 @@ public class WatchedPathsConfig implements Runnable {
 
               line = reader.readLine();
             }
+
+            for (final String path : _watchedPaths) {
+              if (!_watchers.containsKey(path)) {
+                createNewWatcher(path);
+              }
+            }
+
+            for (final String path : _watchers.keySet()) {
+              if (!_watchedPaths.contains(path)) {
+                _watchers.remove(path).stop();
+              }
+            }
+
           }
         }
-        catch (FileNotFoundException e) {
+        catch (final FileNotFoundException e) {
           // this really shouldn't happen if canRead() returned true!
         }
-        catch (IOException e) {
+        catch (final IOException e) {
           // meh
         }
         finally {
@@ -71,7 +99,7 @@ public class WatchedPathsConfig implements Runnable {
             try {
               reader.close();
             }
-            catch (IOException e) {
+            catch (final IOException e) {
               // Really? I really have to put a frikking try-catch inside a finally to make sure I close this thing?
             }
           }
@@ -82,11 +110,24 @@ public class WatchedPathsConfig implements Runnable {
       try {
         Thread.sleep(THREAD_SLEEP_TIME);
       }
-      catch (InterruptedException e) {
+      catch (final InterruptedException e) {
         // move along
       }
     }
 
+  }
+
+
+  private void createNewWatcher(final String path) {
+    try {
+      final SVNLogWatcher watcher = new SVNLogWatcher(path);
+      new Thread(watcher, "SVN log watcher for " + path).start();
+      watcher.addListener(_listener);
+      _watchers.put(path, watcher);
+    }
+    catch (final SVNException e) {
+      e.printStackTrace();
+    }
   }
 
 }

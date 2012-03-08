@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.muscat.kermit.WatchedPathsConfig;
 import org.tmatesoft.svn.core.SVNException;
 import org.tmatesoft.svn.core.SVNLogEntry;
 import org.tmatesoft.svn.core.SVNURL;
@@ -15,48 +14,59 @@ import org.tmatesoft.svn.core.io.SVNRepositoryFactory;
 public class SVNLogWatcher implements Runnable {
 
   private static final long SVN_HEAD = -1;
-  private final WatchedPathsConfig _paths;
   private long _lastSeenRevision = 0;
   private final SVNRepository _repository;
+  private final String _path;
   private final Set<SVNLogListener> _listeners = new LinkedHashSet<SVNLogListener>();
+  private boolean _keepRunning;
 
-  public SVNLogWatcher(final String rootURL, final WatchedPathsConfig paths) throws SVNException {
-    _paths = paths;
+  public SVNLogWatcher(final String svnURL) throws SVNException {
     DAVRepositoryFactory.setup();
-    _repository = SVNRepositoryFactory.create( SVNURL.parseURIEncoded(rootURL));
+    _repository = SVNRepositoryFactory.create(SVNURL.parseURIEncoded(svnURL));
     _lastSeenRevision = _repository.getLatestRevision();
+
+    final SVNURL repositoryRoot = _repository.getRepositoryRoot(true);
+    _path = svnURL.replaceAll(repositoryRoot.toString(), "");
+
+    System.out.println("Listening to path " + _path + " on repository " + _repository.getRepositoryRoot(false));
+
+    _keepRunning = true;
   }
 
   public void addListener(final SVNLogListener listener) {
     _listeners.add(listener);
   }
 
+  public void stop() {
+    _keepRunning = false;
+  }
+
   @Override
   public void run() {
 
-    while (true) {
+    while (_keepRunning) {
       try {
         if (_repository.getLatestRevision() > _lastSeenRevision) {
-          final String[] watchedPaths = _paths.getWatchedPaths().toArray(new String[1]);
           @SuppressWarnings("unchecked")
-          Collection<SVNLogEntry> log = _repository.log(watchedPaths, null, _lastSeenRevision + 1, SVN_HEAD, true, false);
-          for (SVNLogListener listener : _listeners) {
+          final
+          Collection<SVNLogEntry> log = _repository.log(new String[] {_path}, null, _lastSeenRevision + 1, SVN_HEAD, _keepRunning, false);
+          for (final SVNLogListener listener : _listeners) {
             listener.logEntries(log);
           }
-          for (SVNLogEntry e : log) {
+          for (final SVNLogEntry e : log) {
             if (e.getRevision() > _lastSeenRevision) {
               _lastSeenRevision = e.getRevision();
             }
           }
         }
       }
-      catch (SVNException e) {
+      catch (final SVNException e) {
         e.printStackTrace();
       }
       try {
         Thread.sleep(30000);
       }
-      catch (InterruptedException e) {
+      catch (final InterruptedException e) {
         // fine, I'll carry on now
       }
     }
