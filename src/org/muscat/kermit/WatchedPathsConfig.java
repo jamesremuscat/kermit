@@ -11,8 +11,9 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.muscat.kermit.svn.SVNLogListener;
-import org.muscat.kermit.svn.SVNLogWatcher;
+import org.muscat.kermit.log.LogListener;
+import org.muscat.kermit.log.LogWatcher;
+import org.muscat.kermit.log.svn.SVNLogWatcher;
 import org.tmatesoft.svn.core.SVNException;
 
 /**
@@ -34,11 +35,11 @@ public class WatchedPathsConfig implements Runnable {
    */
   private final Set<WatchedPath> _watchedPaths = new LinkedHashSet<WatchedPath>();
 
-  private final SVNLogListener _listener;
+  private final LogListener _listener;
 
-  private final Map<String, SVNLogWatcher> _watchers = new LinkedHashMap<String, SVNLogWatcher>();
+  private final Map<String, LogWatcher> _watchers = new LinkedHashMap<String, LogWatcher>();
 
-  public WatchedPathsConfig(final SVNLogListener listener) {
+  public WatchedPathsConfig(final LogListener listener) {
     _listener = listener;
   }
 
@@ -157,7 +158,7 @@ public class WatchedPathsConfig implements Runnable {
 
   private void createNewWatcher(final WatchedPath path) {
     try {
-      final SVNLogWatcher watcher = new SVNLogWatcher(path);
+      final LogWatcher watcher = new SVNLogWatcher(path);
       new Thread(watcher, "SVN log watcher for " + path).start();
       watcher.addListener(_listener);
       _watchers.put(path.getPath(), watcher);

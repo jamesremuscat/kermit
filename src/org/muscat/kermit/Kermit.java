@@ -7,17 +7,16 @@ import java.util.Set;
 
 import org.jibble.pircbot.Colors;
 import org.jibble.pircbot.PircBot;
-import org.muscat.kermit.svn.SVNLogListener;
-import org.tmatesoft.svn.core.SVNException;
-import org.tmatesoft.svn.core.SVNLogEntry;
+import org.muscat.kermit.log.LogEntry;
+import org.muscat.kermit.log.LogListener;
 
-public final class Kermit extends PircBot implements SVNLogListener {
+public final class Kermit extends PircBot implements LogListener {
 
   private static final int MAX_MESSAGE_LENGTH = 350;
 
   private final WatchedPathsConfig _paths;
 
-  public Kermit(final String nick) throws SVNException {
+  public Kermit(final String nick) {
     setName(nick);
     setLogin(nick);
     _paths = new WatchedPathsConfig(this);
@@ -25,8 +24,8 @@ public final class Kermit extends PircBot implements SVNLogListener {
   }
 
   @Override
-  public synchronized void logEntries(final String label, final Collection<SVNLogEntry> entries) {
-    for (final SVNLogEntry entry : entries) {
+  public synchronized void logEntries(final String label, final Collection<LogEntry> entries) {
+    for (final LogEntry entry : entries) {
       for (final String chan : getChannels()) {
         final String header = extractHeader(label, entry);
         final String path = extractPaths(entry);
@@ -43,7 +42,7 @@ public final class Kermit extends PircBot implements SVNLogListener {
    * @param entry
    * @return
    */
-  private String extractHeader(final String label, final SVNLogEntry entry) {
+  private String extractHeader(final String label, final LogEntry entry) {
 
     final String useLabel;
     if (label == null) {
@@ -60,9 +59,8 @@ public final class Kermit extends PircBot implements SVNLogListener {
    * @param entry
    * @return
    */
-  private String extractPaths(final SVNLogEntry entry) {
-    @SuppressWarnings("unchecked")
-    final Set<String> changedPaths = entry.getChangedPaths().keySet();
+  private String extractPaths(final LogEntry entry) {
+    final Set<String> changedPaths = entry.getChangedPaths();
 
     final String path;
     if (changedPaths.size() == 1) {
@@ -83,7 +81,7 @@ public final class Kermit extends PircBot implements SVNLogListener {
    * @param entry
    * @return
    */
-  private String extractLogMessage(final SVNLogEntry entry) {
+  private String extractLogMessage(final LogEntry entry) {
     final String rawMessage = entry.getMessage().split("\n")[0];
 
     if (rawMessage.length() < MAX_MESSAGE_LENGTH) {
@@ -102,9 +100,8 @@ public final class Kermit extends PircBot implements SVNLogListener {
 
   /**
    * @param args
-   * @throws SVNException
    */
-  public static void main(final String[] args) throws SVNException {
+  public static void main(final String[] args) {
 
     // defaults that get overridden if they're in the properties file
     String nick = "Kermit";
