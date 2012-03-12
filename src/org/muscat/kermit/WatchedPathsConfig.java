@@ -11,10 +11,10 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.muscat.kermit.WatchedPath.PathType;
 import org.muscat.kermit.log.LogListener;
 import org.muscat.kermit.log.LogWatcher;
 import org.muscat.kermit.log.svn.SVNLogWatcher;
-import org.tmatesoft.svn.core.SVNException;
 
 /**
  * Class that periodically reloads a list of watched SVN paths from a config file and maintains a collection of {@link SVNLogWatcher}s for each path.
@@ -74,19 +74,11 @@ public class WatchedPathsConfig implements Runnable {
             while (line != null) {
               if (!line.startsWith(LINE_COMMENT_PREFIX) && line.length() > 0) {
 
-                final String label;
-                final String path;
-                final int separator = line.indexOf(LABEL_SEPARATOR);
-                if (separator > 0) {
-                  label = line.substring(0, separator);
-                  path = line.substring(separator + 1);
-                }
-                else {
-                  label = null;
-                  path = line;
-                }
+                final String label = extractLabel(line);
+                final String type = extractType(line);
+                final String path = extractPath(line);
 
-                _watchedPaths.add(new WatchedPath(label, path));
+                _watchedPaths.add(new WatchedPath(PathType.fromString(type), label, path));
               }
 
               line = reader.readLine();
@@ -118,6 +110,10 @@ public class WatchedPathsConfig implements Runnable {
         catch (final IOException e) {
           // meh
         }
+        catch (final PathWatcherException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
         finally {
           if (reader != null) {
             try {
@@ -141,6 +137,34 @@ public class WatchedPathsConfig implements Runnable {
 
   }
 
+  public static String extractLabel(final String line) {
+    final int separator = line.indexOf(LABEL_SEPARATOR);
+    if (separator > 0 && line.indexOf(LABEL_SEPARATOR, separator + 1) > 0) {
+      return line.substring(0, separator);
+    }
+    return null;
+  }
+
+  public static String extractType(final String line) {
+    final int sep1 = line.indexOf(LABEL_SEPARATOR);
+    if (sep1 > 0) {
+      final int sep2 = line.indexOf(LABEL_SEPARATOR, sep1 + 1);
+      if (sep2 > 0) {
+        return line.substring(sep1 + 1, sep2);
+      }
+      return line.substring(0, sep1);
+    }
+    return null;
+  }
+
+  public static String extractPath(final String line) {
+    final int sep = line.lastIndexOf(LABEL_SEPARATOR);
+    if (sep > 0) {
+      return line.substring(sep + 1);
+    }
+    return null;
+  }
+
 
   /**
    * @param path
@@ -156,16 +180,12 @@ public class WatchedPathsConfig implements Runnable {
   }
 
 
-  private void createNewWatcher(final WatchedPath path) {
-    try {
-      final LogWatcher watcher = new SVNLogWatcher(path);
-      watcher.start();
-      watcher.addListener(_listener);
-      _watchers.put(path.getPath(), watcher);
-    }
-    catch (final SVNException e) {
-      e.printStackTrace();
-    }
+  private void createNewWatcher(final WatchedPath path) throws PathWatcherException {
+    LogWatcher watcher;
+    watcher = path.createWatcher();
+    watcher.start();
+    watcher.addListener(_listener);
+    _watchers.put(path.getPath(), watcher);
   }
 
 }
