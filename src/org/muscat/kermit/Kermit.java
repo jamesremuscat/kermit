@@ -25,10 +25,10 @@ public final class Kermit extends PircBot implements SVNLogListener {
   }
 
   @Override
-  public synchronized void logEntries(final Collection<SVNLogEntry> entries) {
+  public synchronized void logEntries(final String label, final Collection<SVNLogEntry> entries) {
     for (final SVNLogEntry entry : entries) {
       for (final String chan : getChannels()) {
-        final String header = extractHeader(entry);
+        final String header = extractHeader(label, entry);
         final String path = extractPaths(entry);
         sendMessage(chan, header + extractLogMessage(entry));
 
@@ -43,8 +43,17 @@ public final class Kermit extends PircBot implements SVNLogListener {
    * @param entry
    * @return
    */
-  private String extractHeader(final SVNLogEntry entry) {
-    return Colors.GREEN + "r" + entry.getRevision() + Colors.NORMAL + " by " + Colors.BOLD + entry.getAuthor() + Colors.NORMAL + ": ";
+  private String extractHeader(final String label, final SVNLogEntry entry) {
+
+    final String useLabel;
+    if (label == null) {
+      useLabel = "";
+    }
+    else {
+      useLabel = " in " + Colors.YELLOW + label + Colors.NORMAL;
+    }
+
+    return Colors.GREEN + "r" + entry.getRevision() + Colors.NORMAL + useLabel + " by " + Colors.BOLD + entry.getAuthor() + Colors.NORMAL + ": ";
   }
 
   /**

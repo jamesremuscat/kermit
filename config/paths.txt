@@ -1,3 +1,4 @@
-https://svn-dev.int.corefiling.com/svn/devel
-https://svn-dev.int.corefiling.com/svn/usr
-https://svn-rim.int.corefiling.com/svn/
+devel!https://svn-dev.int.corefiling.com/svn/devel
+usr!https://svn-dev.int.corefiling.com/svn/usr
+RIM!https://svn-rim.int.corefiling.com/svn/
+Corp!https://svn-corp.int.corefiling.com/svn/companies/HMRC/

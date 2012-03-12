@@ -21,6 +21,8 @@ import org.tmatesoft.svn.core.SVNException;
  */
 public class WatchedPathsConfig implements Runnable {
 
+  private static final char LABEL_SEPARATOR = '!';
+
   private static final int THREAD_SLEEP_TIME = 60000; // one minute
 
   private static final String PATHS_FILE_NAME = "config/paths.txt";
@@ -28,7 +30,7 @@ public class WatchedPathsConfig implements Runnable {
   /**
    * The projects we are interested in watching.
    */
-  private final Set<String> _watchedPaths = new LinkedHashSet<String>();
+  private final Set<WatchedPath> _watchedPaths = new LinkedHashSet<WatchedPath>();
 
   private final SVNLogListener _listener;
 
@@ -39,7 +41,7 @@ public class WatchedPathsConfig implements Runnable {
   }
 
 
-  public synchronized Set<String> getWatchedPaths() {
+  public synchronized Set<WatchedPath> getWatchedPaths() {
     return Collections.unmodifiableSet(_watchedPaths);
   }
 
@@ -68,22 +70,41 @@ public class WatchedPathsConfig implements Runnable {
 
             while (line != null) {
               if (!line.startsWith("#") && line.length() > 0) {
-                _watchedPaths.add(line);
+
+                final String label;
+                final String path;
+                final int separator = line.indexOf(LABEL_SEPARATOR);
+                if (separator > 0) {
+                  label = line.substring(0, separator);
+                  path = line.substring(separator + 1);
+                }
+                else {
+                  label = null;
+                  path = line;
+                }
+
+                _watchedPaths.add(new WatchedPath(label, path));
               }
 
               line = reader.readLine();
             }
 
-            for (final String path : _watchedPaths) {
-              if (!_watchers.containsKey(path)) {
+            for (final WatchedPath path : _watchedPaths) {
+              if (!_watchers.containsKey(path.getPath())) {
                 createNewWatcher(path);
               }
             }
 
+            final Set<String> toRemove = new LinkedHashSet<String>();
+
             for (final String path : _watchers.keySet()) {
-              if (!_watchedPaths.contains(path)) {
-                _watchers.remove(path).stop();
+              if (!isWatchingPath(path)) {
+                toRemove.add(path);
               }
+            }
+
+            for (final String path : toRemove) {
+              _watchers.remove(path).stop();
             }
 
           }
@@ -118,12 +139,26 @@ public class WatchedPathsConfig implements Runnable {
   }
 
 
-  private void createNewWatcher(final String path) {
+  /**
+   * @param path
+   * @return
+   */
+  private boolean isWatchingPath(final String path) {
+    for (final WatchedPath wp : _watchedPaths) {
+      if (wp.getPath().equals(path)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  private void createNewWatcher(final WatchedPath path) {
     try {
       final SVNLogWatcher watcher = new SVNLogWatcher(path);
       new Thread(watcher, "SVN log watcher for " + path).start();
       watcher.addListener(_listener);
-      _watchers.put(path, watcher);
+      _watchers.put(path.getPath(), watcher);
     }
     catch (final SVNException e) {
       e.printStackTrace();

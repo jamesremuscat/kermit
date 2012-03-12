@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.muscat.kermit.WatchedPath;
 import org.tmatesoft.svn.core.SVNException;
 import org.tmatesoft.svn.core.SVNLogEntry;
 import org.tmatesoft.svn.core.SVNURL;
@@ -19,8 +20,13 @@ public class SVNLogWatcher implements Runnable {
   private final String _path;
   private final Set<SVNLogListener> _listeners = new LinkedHashSet<SVNLogListener>();
   private boolean _keepRunning;
+  private final String _label;
 
-  public SVNLogWatcher(final String svnURL) throws SVNException {
+  public SVNLogWatcher(final WatchedPath svnPath) throws SVNException {
+
+    final String svnURL = svnPath.getPath();
+    _label = svnPath.getLabel();
+
     DAVRepositoryFactory.setup();
     _repository = SVNRepositoryFactory.create(SVNURL.parseURIEncoded(svnURL));
     _lastSeenRevision = _repository.getLatestRevision();
@@ -51,7 +57,7 @@ public class SVNLogWatcher implements Runnable {
           final
           Collection<SVNLogEntry> log = _repository.log(new String[] {_path}, null, _lastSeenRevision + 1, SVN_HEAD, _keepRunning, false);
           for (final SVNLogListener listener : _listeners) {
-            listener.logEntries(log);
+            listener.logEntries(_label, log);
           }
           for (final SVNLogEntry e : log) {
             if (e.getRevision() > _lastSeenRevision) {

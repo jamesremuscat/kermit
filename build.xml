@@ -14,7 +14,7 @@
 	</target>
 	<target name="compile">
 		<mkdir dir="${build.dir}/classes"/>
-		<javac srcdir="src" destdir="${build.dir}/classes" classpathref="classpath" includeantruntime="false" />
+		<javac srcdir="src" destdir="${build.dir}/classes" classpathref="classpath" includeantruntime="false" debug="true" />
 	</target>
 	<target name="dist" depends="clean, compile">
 		<jar destfile="${dist.dir}/kermit.jar" basedir="${build.dir}/classes" />

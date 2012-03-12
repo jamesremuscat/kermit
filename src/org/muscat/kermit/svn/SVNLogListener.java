@@ -6,6 +6,6 @@ import org.tmatesoft.svn.core.SVNLogEntry;
 
 public interface SVNLogListener {
 
-  public void logEntries(final Collection<SVNLogEntry> entries);
+  public void logEntries(final String label, final Collection<SVNLogEntry> entries);
 
 }
