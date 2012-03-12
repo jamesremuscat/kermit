@@ -21,6 +21,8 @@ import org.tmatesoft.svn.core.SVNException;
  */
 public class WatchedPathsConfig implements Runnable {
 
+  private static final String LINE_COMMENT_PREFIX = "#";
+
   private static final char LABEL_SEPARATOR = '!';
 
   private static final int THREAD_SLEEP_TIME = 60000; // one minute
@@ -69,7 +71,7 @@ public class WatchedPathsConfig implements Runnable {
             _watchedPaths.clear();
 
             while (line != null) {
-              if (!line.startsWith("#") && line.length() > 0) {
+              if (!line.startsWith(LINE_COMMENT_PREFIX) && line.length() > 0) {
 
                 final String label;
                 final String path;
