@@ -6,7 +6,7 @@ public interface LogEntry {
 
   public String getAuthor();
   public String getMessage();
-  public long getRevision();
+  public String getRevision();
   public Set<String> getChangedPaths();
 
 }

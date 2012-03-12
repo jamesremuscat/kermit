@@ -2,3 +2,4 @@ devel!svn!https://svn-dev.int.corefiling.com/svn/devel
 usr!svn!https://svn-dev.int.corefiling.com/svn/usr
 RIM!svn!https://svn-rim.int.corefiling.com/svn/
 Corp SVN!svn!https://svn-corp.int.corefiling.com/svn/companies/HMRC/
+TPReports Hg!hg!https://hg-dev.int.corefiling.com/hg/ps/projects/TPReports/atom-log

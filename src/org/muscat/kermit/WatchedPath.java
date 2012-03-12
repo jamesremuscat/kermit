@@ -1,6 +1,7 @@
 package org.muscat.kermit;
 
 import org.muscat.kermit.log.LogWatcher;
+import org.muscat.kermit.log.hg.HgLogWatcher;
 import org.muscat.kermit.log.svn.SVNLogWatcher;
 import org.tmatesoft.svn.core.SVNException;
 
@@ -74,13 +75,23 @@ public class WatchedPath {
           throw new PathWatcherException(e);
         }
       }
-    };
+    },
+    HG {
+      @Override
+      public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
+        return new HgLogWatcher(path);
+      }
+    }
+    ;
 
     public abstract LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException;
 
     public static PathType fromString(final String s) throws PathWatcherException {
       if ("svn".equalsIgnoreCase(s)) {
         return SVN;
+      }
+      if ("hg".equalsIgnoreCase(s)) {
+        return HG;
       }
       throw new PathWatcherException("Unknown path type: " + s);
     }

@@ -31,9 +31,9 @@ public final class Kermit extends PircBot implements LogListener {
         final String path = extractPaths(entry);
         sendMessage(chan, header + extractLogMessage(entry));
 
-        final long numSpaces = Math.round(Math.floor(Math.log10(entry.getRevision())) + 1);
+        final long numSpaces = Math.round(Math.floor(entry.getRevision().length()));
 
-        sendMessage(chan, StringUtils.spaces((int) (numSpaces + 1)) + Colors.DARK_GRAY + " in " + path + Colors.NORMAL);
+        sendMessage(chan, StringUtils.spaces((int) (numSpaces + 1)) + Colors.DARK_GRAY + "in " + path + Colors.NORMAL);
       }
     }
   }
@@ -52,7 +52,7 @@ public final class Kermit extends PircBot implements LogListener {
       useLabel = " in " + Colors.YELLOW + label + Colors.NORMAL;
     }
 
-    return Colors.GREEN + "r" + entry.getRevision() + Colors.NORMAL + useLabel + " by " + Colors.BOLD + entry.getAuthor() + Colors.NORMAL + ": ";
+    return Colors.GREEN + entry.getRevision() + Colors.NORMAL + useLabel + " by " + Colors.BOLD + entry.getAuthor() + Colors.NORMAL + ": ";
   }
 
   /**

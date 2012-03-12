@@ -1,5 +1,6 @@
 package org.muscat.kermit.log;
 
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -62,5 +63,14 @@ public abstract class LogWatcher implements Runnable {
    * Implementations should check for updates and notify listeners in this method.
    */
   protected abstract void checkUpdates();
+
+  /**
+   * @param entries
+   */
+  protected void notifyAllListeners(final String label, final Collection<LogEntry> entries) {
+    for (final LogListener listener : getListeners()) {
+      listener.logEntries(label, entries);
+    }
+  }
 
 }
