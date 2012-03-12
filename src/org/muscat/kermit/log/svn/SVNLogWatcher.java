@@ -51,7 +51,7 @@ public class SVNLogWatcher extends LogWatcher {
         Collection<SVNLogEntry> log = _repository.log(new String[] {_path}, null, _lastSeenRevision + 1, SVN_HEAD, true, false);
 
         final Collection<LogEntry> converted = convertEntries(log);
-        for (final LogListener listener : _listeners) {
+        for (final LogListener listener : getListeners()) {
           listener.logEntries(_label, converted);
         }
         for (final SVNLogEntry e : log) {
@@ -64,6 +64,11 @@ public class SVNLogWatcher extends LogWatcher {
     catch (final SVNException e) {
 
     }
+  }
+
+  @Override
+  protected String getThreadComment() {
+    return "SVN log watcher for " + _path;
   }
 
   private Collection<LogEntry> convertEntries(final Collection<SVNLogEntry> log) {

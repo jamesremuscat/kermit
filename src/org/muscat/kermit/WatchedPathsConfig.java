@@ -159,7 +159,7 @@ public class WatchedPathsConfig implements Runnable {
   private void createNewWatcher(final WatchedPath path) {
     try {
       final LogWatcher watcher = new SVNLogWatcher(path);
-      new Thread(watcher, "SVN log watcher for " + path).start();
+      watcher.start();
       watcher.addListener(_listener);
       _watchers.put(path.getPath(), watcher);
     }
