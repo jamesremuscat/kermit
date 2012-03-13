@@ -1,4 +1,4 @@
-package org.muscat.kermit.log.hg;
+package org.muscat.kermit.log.atom;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,8 +54,14 @@ public class AtomParser extends DefaultHandler {
 
   private boolean _inEntry = false;
 
+  private String _revisionPrefix = "";
+
   protected AtomParser() {
     // only used by static member method
+  }
+
+  public void setRevisionPrefix(final String prefix) {
+    _revisionPrefix = prefix;
   }
 
   @Override
@@ -92,7 +98,7 @@ public class AtomParser extends DefaultHandler {
       }
     }
     else if ("entry".equals(localName)) {
-      _changes.add(new AtomLogEntry(_revision, _date, _author, _message, Collections.singleton(_url)));
+      _changes.add(new AtomLogEntry(_revisionPrefix + _revision, _date, _author, _message, Collections.singleton(_url)));
       _inEntry = false;
     }
 

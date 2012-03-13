@@ -1,4 +1,4 @@
-package org.muscat.kermit.log.hg;
+package org.muscat.kermit.log.atom;
 
 import java.util.Date;
 import java.util.Set;
