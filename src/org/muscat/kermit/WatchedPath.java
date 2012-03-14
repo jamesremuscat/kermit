@@ -61,6 +61,11 @@ public class WatchedPath {
     return true;
   }
 
+  @Override
+  public String toString() {
+    return _label + "!" + _type + "!" + _path;
+  }
+
   public LogWatcher createWatcher() throws PathWatcherException {
     return _type.getWatcher(this);
   }
