@@ -16,15 +16,14 @@ public abstract class AtomLogWatcher extends LogWatcher {
 
   private final Set<String> _seenChanges = new LinkedHashSet<String>();
   private final AtomParser _parser = AtomParser.Factory.getInstance();
-  private final WatchedPath _path;
 
   public AtomLogWatcher(final WatchedPath logPath) {
-    _path = logPath;
+    super(logPath);
     _parser.setRevisionPrefix(getRevisionPrefix());
 
     // base set of changes
     try {
-      final List<LogEntry> init = _parser.readFromURL(_path.getPath());
+      final List<LogEntry> init = _parser.readFromURL(getPath().getPath());
       _seenChanges.addAll(extractChangesetInfo(init));
     }
     catch (final SAXException e) {
@@ -55,7 +54,7 @@ public abstract class AtomLogWatcher extends LogWatcher {
   protected final void checkUpdates() {
 
     try {
-      final List<LogEntry> changes = _parser.readFromURL(_path.getPath()); // is immutable
+      final List<LogEntry> changes = _parser.readFromURL(getPath().getPath()); // is immutable
 
       final Collection<LogEntry> toNotify = new LinkedHashSet<LogEntry>();
 
@@ -65,7 +64,7 @@ public abstract class AtomLogWatcher extends LogWatcher {
         }
       }
 
-      notifyAllListeners(_path.getLabel(), toNotify);
+      notifyAllListeners(getPath().getLabel(), toNotify);
 
       _seenChanges.clear();
       _seenChanges.addAll(extractChangesetInfo(changes));
@@ -85,10 +84,6 @@ public abstract class AtomLogWatcher extends LogWatcher {
   @Override
   protected String getThreadComment() {
     return "Atom log watcher for " + getPath();
-  }
-
-  protected final WatchedPath getPath() {
-    return _path;
   }
 
 }

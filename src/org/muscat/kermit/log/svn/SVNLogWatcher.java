@@ -24,7 +24,7 @@ public class SVNLogWatcher extends LogWatcher {
   private final String _label;
 
   public SVNLogWatcher(final WatchedPath svnPath) throws SVNException {
-
+    super(svnPath);
     final String svnURL = svnPath.getPath();
     _label = svnPath.getLabel();
 
@@ -34,8 +34,6 @@ public class SVNLogWatcher extends LogWatcher {
 
     final SVNURL repositoryRoot = _repository.getRepositoryRoot(true);
     _path = svnURL.replaceAll(repositoryRoot.toString(), "");
-
-    System.out.println("Listening to path " + _path + " on repository " + _repository.getRepositoryRoot(false));
   }
 
   /**

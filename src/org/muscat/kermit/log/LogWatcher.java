@@ -4,12 +4,16 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.muscat.kermit.WatchedPath;
+
 public abstract class LogWatcher implements Runnable {
 
   private final Set<LogListener> _listeners = new LinkedHashSet<LogListener>();
   private boolean _keepRunning;
+  private final WatchedPath _path;
 
-  public LogWatcher() {
+  public LogWatcher(final WatchedPath path) {
+    _path = path;
     _keepRunning = true;
   }
 
@@ -43,8 +47,14 @@ public abstract class LogWatcher implements Runnable {
     return _listeners;
   }
 
+  protected final WatchedPath getPath() {
+    return _path;
+  }
+
   @Override
   public final void run() {
+
+    System.out.println("Starting listener for " + _path.toString());
 
     while (_keepRunning) {
       checkUpdates();
@@ -56,6 +66,8 @@ public abstract class LogWatcher implements Runnable {
         // fine, I'll carry on now
       }
     }
+
+    System.out.println("Finished listener for " + _path.toString());
 
   }
 
