@@ -1,26 +1,101 @@
 package org.muscat.kermit;
 
 import java.io.FileReader;
+import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Properties;
+import java.util.Queue;
 import java.util.Set;
 
 import org.jibble.pircbot.Colors;
 import org.jibble.pircbot.PircBot;
 import org.muscat.kermit.log.LogEntry;
 import org.muscat.kermit.log.LogListener;
+import org.muscat.kermit.subscriptions.SubscriptionStore;
 
 public final class Kermit extends PircBot implements LogListener {
 
   private static final int MAX_MESSAGE_LENGTH = 350;
+  private static final int MAX_SUBSCRIPTION_MSG_LINES = 5;
 
   private final WatchedPathsConfig _paths;
+
+  private final SubscriptionStore _subscriptions = SubscriptionStore.Factory.getSerializableStore("KermitSubscriptions");
 
   public Kermit(final String nick) {
     setName(nick);
     setLogin(nick);
     _paths = new WatchedPathsConfig(this);
     new Thread(_paths, "Path config watcher").start();
+  }
+
+  @Override
+  protected void onPrivateMessage(final String sender, final String login, final String hostname, final String message) {
+    if (message.startsWith("!sub ")) {
+      final String pageName = message.substring("!sub ".length());
+      _subscriptions.add(pageName, sender);
+      sendMessage(sender, "You are now subscribed to " + pageName);
+    }
+    else if (message.startsWith("!unsub ")) {
+      final String pageName = message.substring("!unsub ".length());
+      _subscriptions.remove(pageName, sender);
+      sendMessage(sender, "You are no longer subscribed to " + pageName);
+    }
+    else if (message.startsWith("!list")) {
+      sendMessage(sender, getSubscriptionListMessage(sender));
+    }
+    else {
+      sendMessage(sender, getHelpMessage());
+    }
+
+  }
+
+  private static String[] getHelpMessage() {
+    final String[] msg = new String[] {
+        "WikiBot " + VERSION + " will respond to the following by /msg:",
+        "!sub WikiPageName     Subscribe to a page",
+        "!unsub WikiPageName   Unsubscribe from a page",
+        "!list                 List your current subscriptions",
+        "Note, subscriptions are by nick; nick changes are not acknowledged."
+    };
+    return msg;
+  }
+
+  /**
+   * @param sender
+   * @return
+   */
+  private String[] getSubscriptionListMessage(final String sender) {
+    final Queue<String> subs = new ArrayDeque<String>(_subscriptions.getAllForUser(sender));
+
+    final String[] response = new String[MAX_SUBSCRIPTION_MSG_LINES];
+    response[0] = "You are subscribed to: ";
+    int i = 0;
+
+    while (i < MAX_SUBSCRIPTION_MSG_LINES && !subs.isEmpty()) {
+      if (response[i].length() + subs.peek().length() + 2 >= getMaxLineLength() - 2) {
+        i++;
+      }
+      response[i] += subs.poll() + ", ";
+    }
+
+    response[i] = response[i].substring(0, response[i].length() - 2);
+    return response;
+  }
+
+  /**
+   * Helper method that sends multiple messages (or a multi-line message) at
+   * once.
+   *
+   * @param target Destination of message (channel or user)
+   * @param messages Array of messages to send
+   */
+  protected void sendMessage(final String target, final String[] messages) {
+    for (final String m : messages) {
+      if (m != null) {
+        sendMessage(target, m);
+      }
+    }
   }
 
   @Override
