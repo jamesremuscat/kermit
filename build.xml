@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="Kermit" basedir="." default="dist">
-  <property value='lib' name='lib.dir' />
-  <property value='build' name='build.dir' />
-  <property value='dist' name='dist.dir' />
-  <path id='classpath'>
-    <fileset includes='**/*.jar' dir='${lib.dir}' />
-    <pathelement path='${build.dir}/classes' />
-  </path>
+	<property value='lib' name='lib.dir' />
+	<property value='build' name='build.dir' />
+	<property value='dist' name='dist.dir' />
+	<property name="versionInfoLocation" value="org/muscat/kermit" />
+	<path id='classpath'>
+		<fileset includes='**/*.jar' dir='${lib.dir}' />
+		<pathelement path='${build.dir}/classes' />
+	</path>
 	<target name="clean">
-		<delete dir="${build.dir}/classes" failonerror="false"/>
-		<delete dir="${dist.dir}"/>
+		<delete dir="${build.dir}/classes" failonerror="false" />
+		<delete dir="${dist.dir}" />
 	</target>
-	<target name="compile">
-		<mkdir dir="${build.dir}/classes"/>
+	<target name="compile" depends="generateVersionInfo">
+		<mkdir dir="${build.dir}/classes" />
 		<javac srcdir="src" destdir="${build.dir}/classes" classpathref="classpath" includeantruntime="false" debug="true" />
+		<copy file="src/${versionInfoLocation}/version.txt" todir="${build.dir}/classes/${versionInfoLocation}" />
 	</target>
 	<target name="dist" depends="clean, compile">
 		<jar destfile="${dist.dir}/kermit.jar" basedir="${build.dir}/classes" />
+	</target>
+	<target name="generateVersionInfo">
+		<exec dir="${basedir}" executable="hg" outputproperty="version">
+			<arg value="id" />
+		</exec>
+		<echo file="src/${versionInfoLocation}/version.txt" message="${version}" />
 	</target>
 </project>

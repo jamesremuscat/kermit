@@ -1,6 +1,10 @@
 package org.muscat.kermit;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Properties;
@@ -44,18 +48,39 @@ public final class Kermit extends PircBot implements LogListener {
     else if (message.startsWith("!list")) {
       sendMessage(sender, getSubscriptionListMessage(sender));
     }
+    else if (message.startsWith("!version")) {
+      sendMessage(sender, getVersionMessage());
+    }
     else {
       sendMessage(sender, getHelpMessage());
     }
 
   }
 
+  private String getVersionMessage() {
+
+    String revisionInfo = "unknown";
+    try {
+      final InputStream versionSource = getClass().getResourceAsStream("version.txt");
+      if (versionSource.available() > 0) {
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(versionSource));
+        revisionInfo = reader.readLine();
+      }
+    }
+    catch (final IOException e) {
+      // well, we tried...
+      e.printStackTrace();
+    }
+    return "Kermit rev. " + revisionInfo;
+  }
+
   private static String[] getHelpMessage() {
     final String[] msg = new String[] {
-        "WikiBot " + VERSION + " will respond to the following by /msg:",
+        "Kermit will respond to the following by /msg:",
         "!sub WikiPageName     Subscribe to a page",
         "!unsub WikiPageName   Unsubscribe from a page",
         "!list                 List your current subscriptions",
+        "!version              Show version of Kermit",
         "Note, subscriptions are by nick; nick changes are not acknowledged."
     };
     return msg;
