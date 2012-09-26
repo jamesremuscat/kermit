@@ -4,3 +4,5 @@ dist/
 
 syntax: regexp
 ^src/org/muscat/kermit/version\.txt$
+syntax: regexp
+^KermitSubscriptions\.ser$
