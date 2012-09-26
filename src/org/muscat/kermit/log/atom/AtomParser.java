@@ -96,6 +96,10 @@ public class AtomParser extends DefaultHandler {
       catch (final ParseException e) {
         _date = new Date();
       }
+      catch (final NumberFormatException e) {
+        System.out.println("ERROR No 'updated' date for " + _revisionPrefix + _revision + " " +_author + " " +_message);
+        _date = new Date();
+      }
     }
     else if ("entry".equals(localName)) {
       _changes.add(new AtomLogEntry(_revisionPrefix + _revision, _date, _author, _message, Collections.singleton(_url)));
