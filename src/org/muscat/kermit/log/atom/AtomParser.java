@@ -145,6 +145,7 @@ public class AtomParser extends DefaultHandler {
           }
 
           out.write(read);
+          out.flush();
           prev = read;
           read = inputStream.read();
         }
