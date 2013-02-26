@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 public class TestPathUtils extends TestCase {
 
-  public void testActualCommit() {
+  public void testActualCommits() {
 
     final String[] paths = {
         "devel/mwtms/trunk/reports.ui/src/com/corefiling/spidermonkey/reports/ui/results/ResultSourceLookup.java",
@@ -26,6 +26,13 @@ public class TestPathUtils extends TestCase {
     };
 
     assertEquals("devel/mwtms/trunk/reports.ui", PathUtils.extractLongestCommonParentPath(paths));
+
+    final String[] nico = {
+        "usr/njlgad/SeahorsesStatusPage/css/",
+        "usr/njlgad/SeahorsesStatusPage/css/style.css",
+        "usr/njlgad/SeahorsesStatusPage/index.html"
+    };
+    assertEquals("usr/njlgad/SeahorsesStatusPage", PathUtils.extractLongestCommonParentPath(nico));
   }
 
   public void testSingleFile() {
@@ -50,6 +57,12 @@ public class TestPathUtils extends TestCase {
     };
 
     assertEquals("aaaa/bbbb/aaaa", PathUtils.extractLongestCommonParentPath(paths2));
+
+    final String[] lengths = {
+        "aaaa/bbbb/something/",
+        "aaaa/bbbb/something/somethingElse"
+    };
+    assertEquals("aaaa/bbbb/something", PathUtils.extractLongestCommonParentPath(lengths));
   }
 
   public void testSharedPathPrefix() {

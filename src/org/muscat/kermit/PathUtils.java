@@ -25,7 +25,7 @@ public class PathUtils {
       int pathIndex = 0;
       final String[] currentPath = quantisedPaths.get(i);
 
-      while (candidate[pathIndex].equals(currentPath[pathIndex])) {
+      while (pathIndex < currentPath.length && pathIndex < candidate.length && candidate[pathIndex].equals(currentPath[pathIndex])) {
         pathIndex++;
       }
 
