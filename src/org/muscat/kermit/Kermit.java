@@ -167,7 +167,7 @@ public final class Kermit extends PircBot implements LogListener {
       path = (String) changedPaths.toArray()[0];
     }
     else if (changedPaths.size() > 1) {
-      final String commonPrefix = StringUtils.getCommonPrefix(changedPaths.toArray(new String[1]));
+      final String commonPrefix = PathUtils.extractLongestCommonParentPath(changedPaths.toArray(new String[1]));
 
       path = changedPaths.size() + " files under " + commonPrefix;
     }
