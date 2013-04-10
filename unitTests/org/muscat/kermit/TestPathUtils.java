@@ -59,10 +59,10 @@ public class TestPathUtils extends TestCase {
     assertEquals("aaaa/bbbb/aaaa", PathUtils.extractLongestCommonParentPath(paths2));
 
     final String[] lengths = {
-        "aaaa/bbbb/something/",
-        "aaaa/bbbb/something/somethingElse"
+        "devel/libraries/3rdParty/google/diff-match-patch/trunk/",
+        "devel/libraries/3rdParty/google/diff-match-patch/"
     };
-    assertEquals("aaaa/bbbb/something", PathUtils.extractLongestCommonParentPath(lengths));
+    assertEquals("devel/libraries/3rdParty/google/diff-match-patch", PathUtils.extractLongestCommonParentPath(lengths));
   }
 
   public void testSharedPathPrefix() {

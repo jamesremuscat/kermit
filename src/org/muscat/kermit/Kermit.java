@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Properties;
 import java.util.Queue;
@@ -161,20 +162,27 @@ public final class Kermit extends PircBot implements LogListener {
    */
   private String extractPaths(final LogEntry entry) {
     final Set<String> changedPaths = entry.getChangedPaths();
+    try {
 
-    final String path;
-    if (changedPaths.size() == 1) {
-      path = (String) changedPaths.toArray()[0];
-    }
-    else if (changedPaths.size() > 1) {
-      final String commonPrefix = PathUtils.extractLongestCommonParentPath(changedPaths.toArray(new String[1]));
+      final String path;
+      if (changedPaths.size() == 1) {
+        path = (String) changedPaths.toArray()[0];
+      }
+      else if (changedPaths.size() > 1) {
+        final String commonPrefix = PathUtils.extractLongestCommonParentPath(changedPaths.toArray(new String[1]));
 
-      path = changedPaths.size() + " files under " + commonPrefix;
+        path = changedPaths.size() + " files under " + commonPrefix;
+      }
+      else {
+        path = "no files";
+      }
+      return path;
     }
-    else {
-      path = "no files";
+    catch (final ArrayIndexOutOfBoundsException e) {
+      System.out.println("Failed extracting paths for " + entry.getRevision());
+      System.out.println(Arrays.toString(changedPaths.toArray()));
+      throw e;
     }
-    return path;
   }
 
   /**
