@@ -14,12 +14,15 @@ import org.xml.sax.SAXException;
 
 public abstract class AtomLogWatcher extends LogWatcher {
 
+  private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssXXX";
+
   private final Set<String> _seenChanges = new LinkedHashSet<String>();
-  private final AtomParser _parser = AtomParser.Factory.getInstance();
+  private final AtomParser _parser = new AtomParser();
 
   public AtomLogWatcher(final WatchedPath logPath) {
     super(logPath);
     _parser.setRevisionPrefix(getRevisionPrefix());
+    _parser.setDateFormat(getDateFormatString());
 
     // base set of changes
     try {
@@ -34,6 +37,10 @@ public abstract class AtomLogWatcher extends LogWatcher {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+  }
+
+  protected String getDateFormatString() {
+    return DATE_FORMAT;
   }
 
   protected static final Set<String> extractChangesetInfo(final Collection<LogEntry> logs) {

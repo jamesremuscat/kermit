@@ -40,8 +40,6 @@ public class AtomParser extends DefaultHandler {
    */
   private static final int READ_TIMEOUT = 60000; // in milliseconds; one of your Earth minutes
 
-  static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-
   private final List<LogEntry> _changes = new LinkedList<LogEntry>();
 
   private String _revision;
@@ -56,12 +54,17 @@ public class AtomParser extends DefaultHandler {
 
   private String _revisionPrefix = "";
 
-  protected AtomParser() {
-    // only used by static member method
-  }
+  private String _dateFormatString = "yyyy-MM-dd'T'HH:mm:ssXXX";
+
+  private DateFormat _dateFormat = new SimpleDateFormat(_dateFormatString);
 
   public void setRevisionPrefix(final String prefix) {
     _revisionPrefix = prefix;
+  }
+
+  public void setDateFormat(final String dateFormatString) {
+    _dateFormatString = dateFormatString;
+    _dateFormat = new SimpleDateFormat(_dateFormatString);
   }
 
   @Override
@@ -91,13 +94,16 @@ public class AtomParser extends DefaultHandler {
     }
     else if ("updated".equals(localName)) {
       try {
-        _date = DATE_FORMAT.parse(_stringBuf);
+        _date = _dateFormat.parse(_stringBuf);
       }
       catch (final ParseException e) {
+        System.out.println("Parsing date " + _stringBuf + " failed against " + _dateFormatString);
+        e.printStackTrace();
         _date = new Date();
       }
       catch (final NumberFormatException e) {
-        System.out.println("ERROR No 'updated' date for " + _revisionPrefix + _revision + " " +_author + " " +_message);
+        System.out.println("Parsing date " + _stringBuf + " failed against " + _dateFormatString);
+        e.printStackTrace();
         _date = new Date();
       }
     }
@@ -166,29 +172,10 @@ public class AtomParser extends DefaultHandler {
   private List<LogEntry> read(final InputSource is) throws SAXException, IOException {
 
     final XMLReader reader = XMLReaderFactory.createXMLReader();
-    final AtomParser handler = new AtomParser();
-    reader.setContentHandler(handler);
+    reader.setContentHandler(this);
     reader.parse(is);
 
-    return handler.getChanges();
-  }
-
-  /**
-   * Factory for the parser.
-   * @author jrem
-   */
-  public static class Factory {
-
-    private Factory() {
-      // don't construct me
-    }
-
-    private static final AtomParser PARSER = new AtomParser();
-
-    public static AtomParser getInstance() {
-      return PARSER;
-    }
-
+    return getChanges();
   }
 
 }
