@@ -9,3 +9,4 @@ CFL wiki!reviki!https://wiki.int.corefiling.com/cfl/RecentChanges?ctype=atom
 Dev wiki!reviki!https://wiki.int.corefiling.com/dev/RecentChanges?ctype=atom
 Consulting wiki!reviki!https://wiki.int.corefiling.com/consulting/RecentChanges?ctype=atom
 ROMP wiki!reviki!https://wiki.int.corefiling.com/romp/RecentChanges?ctype=atom
+Quips List!quips!http://www.int.corefiling.com/~jrem/quips.php

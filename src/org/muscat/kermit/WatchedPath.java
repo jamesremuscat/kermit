@@ -2,6 +2,7 @@ package org.muscat.kermit;
 
 import org.muscat.kermit.log.LogWatcher;
 import org.muscat.kermit.log.hg.HgLogWatcher;
+import org.muscat.kermit.log.quips.QuipsAtomFeedWatcher;
 import org.muscat.kermit.log.reviki.RevikiRecentChangesWatcher;
 import org.muscat.kermit.log.svn.SVNLogWatcher;
 import org.tmatesoft.svn.core.SVNException;
@@ -93,6 +94,12 @@ public class WatchedPath {
       public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
         return new RevikiRecentChangesWatcher(path);
       }
+    },
+    QUIPS {
+      @Override
+      public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
+        return new QuipsAtomFeedWatcher(path);
+      }
     }
     ;
 
@@ -107,6 +114,9 @@ public class WatchedPath {
       }
       if ("reviki".equalsIgnoreCase(s)) {
         return REVIKI;
+      }
+      if ("quips".equalsIgnoreCase(s)) {
+        return QUIPS;
       }
       throw new PathWatcherException("Unknown path type: " + s);
     }
