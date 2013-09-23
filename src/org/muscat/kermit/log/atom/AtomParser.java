@@ -73,6 +73,9 @@ public class AtomParser extends DefaultHandler {
     if ("entry".equals(localName)) {
       _inEntry = true;
     }
+    if ("feed".equals(localName)) {
+      _changes.clear();
+    }
   }
 
   @Override
