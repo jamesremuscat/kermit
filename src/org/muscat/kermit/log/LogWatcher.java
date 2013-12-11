@@ -79,7 +79,7 @@ public abstract class LogWatcher implements Runnable {
   /**
    * @param entries
    */
-  protected void notifyAllListeners(final String label, final Collection<LogEntry> entries) {
+  protected void notifyAllListeners(final Collection<LogEntry> entries) {
     for (final LogListener listener : getListeners()) {
       listener.logEntries(entries);
     }

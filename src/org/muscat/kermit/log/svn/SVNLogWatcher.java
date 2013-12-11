@@ -48,7 +48,7 @@ public class SVNLogWatcher extends LogWatcher {
         Collection<SVNLogEntry> log = _repository.log(new String[] {_path}, null, _lastSeenRevision + 1, SVN_HEAD, true, false);
 
         final Collection<LogEntry> converted = convertEntries(log);
-        notifyAllListeners(_label, converted);
+        notifyAllListeners(converted);
         for (final SVNLogEntry e : log) {
           if (e.getRevision() > _lastSeenRevision) {
             _lastSeenRevision = e.getRevision();

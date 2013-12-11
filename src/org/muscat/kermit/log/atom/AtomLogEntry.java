@@ -10,8 +10,8 @@ public class AtomLogEntry extends LogEntryImpl implements LogEntry {
 
   private final Date _date;
 
-  public AtomLogEntry(final String revision, final Date date, final String author, final String message, final Set<String> changedPaths) {
-    super("", revision, author, message, changedPaths);
+  public AtomLogEntry(final String label, final String revision, final Date date, final String author, final String message, final Set<String> changedPaths) {
+    super(label, revision, author, message, changedPaths);
     _date = date;
   }
 

@@ -26,7 +26,7 @@ public class StoryStateWatcher extends LogWatcher {
 
     final Set<LogEntry> changes = _lastStates.compareTo(newStates);
 
-    notifyAllListeners(null, changes);
+    notifyAllListeners(changes);
 
     _lastStates = newStates;
   }

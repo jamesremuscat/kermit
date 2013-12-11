@@ -58,6 +58,8 @@ public class AtomParser extends DefaultHandler {
 
   private DateFormat _dateFormat = new SimpleDateFormat(_dateFormatString);
 
+  private String _label = "";
+
   public void setRevisionPrefix(final String prefix) {
     _revisionPrefix = prefix;
   }
@@ -65,6 +67,10 @@ public class AtomParser extends DefaultHandler {
   public void setDateFormat(final String dateFormatString) {
     _dateFormatString = dateFormatString;
     _dateFormat = new SimpleDateFormat(_dateFormatString);
+  }
+
+  public void setLabel(final String label) {
+    _label = label;
   }
 
   @Override
@@ -111,7 +117,7 @@ public class AtomParser extends DefaultHandler {
       }
     }
     else if ("entry".equals(localName)) {
-      _changes.add(new AtomLogEntry(_revisionPrefix + _revision, _date, _author, _message, Collections.singleton(_url)));
+      _changes.add(new AtomLogEntry(_label, _revisionPrefix + _revision, _date, _author, _message, Collections.singleton(_url)));
       _inEntry = false;
     }
 

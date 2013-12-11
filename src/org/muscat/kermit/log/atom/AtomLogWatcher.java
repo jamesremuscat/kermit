@@ -23,6 +23,7 @@ public abstract class AtomLogWatcher extends LogWatcher {
     super(logPath);
     _parser.setRevisionPrefix(getRevisionPrefix());
     _parser.setDateFormat(getDateFormatString());
+    _parser.setLabel(getPath().getLabel());
 
     // base set of changes
     try {
@@ -71,7 +72,7 @@ public abstract class AtomLogWatcher extends LogWatcher {
         }
       }
 
-      notifyAllListeners(getPath().getLabel(), toNotify);
+      notifyAllListeners(toNotify);
 
       _seenChanges.clear();
       _seenChanges.addAll(extractChangesetInfo(changes));
