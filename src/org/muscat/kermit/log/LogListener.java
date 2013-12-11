@@ -4,6 +4,6 @@ import java.util.Collection;
 
 public interface LogListener {
 
-  public void logEntries(final String label, final Collection<LogEntry> entries);
+  public void logEntries(final Collection<LogEntry> entries);
 
 }

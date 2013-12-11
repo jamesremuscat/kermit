@@ -81,7 +81,7 @@ public abstract class LogWatcher implements Runnable {
    */
   protected void notifyAllListeners(final String label, final Collection<LogEntry> entries) {
     for (final LogListener listener : getListeners()) {
-      listener.logEntries(label, entries);
+      listener.logEntries(entries);
     }
   }
 

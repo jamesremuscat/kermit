@@ -71,7 +71,7 @@ public class SVNLogWatcher extends LogWatcher {
 
     for (final SVNLogEntry svn : log) {
       @SuppressWarnings("unchecked")
-      final LogEntryImpl e = new LogEntryImpl("r" + Long.toString(svn.getRevision()), svn.getAuthor(), svn.getMessage(), svn.getChangedPaths().keySet());
+      final LogEntryImpl e = new LogEntryImpl(_label, "r" + Long.toString(svn.getRevision()), svn.getAuthor(), svn.getMessage(), svn.getChangedPaths().keySet());
       c.add(e);
     }
 

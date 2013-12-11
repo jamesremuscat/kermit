@@ -125,36 +125,20 @@ public final class Kermit extends PircBot implements LogListener {
   }
 
   @Override
-  public synchronized void logEntries(final String label, final Collection<LogEntry> entries) {
+  public synchronized void logEntries(final Collection<LogEntry> entries) {
     for (final LogEntry entry : entries) {
       for (final String chan : getChannels()) {
-        final String header = extractHeader(label, entry);
         final String path = extractPaths(entry);
-        sendMessage(chan, header + extractLogMessage(entry));
+        sendMessage(chan, limitMessageLength(entry.getMessage()));
 
-        final long numSpaces = Math.round(Math.floor(entry.getRevision().length()));
+        final long numSpaces = Math.round(Math.floor(entry.getChangeID().length()));
 
         sendMessage(chan, StringUtils.spaces((int) (numSpaces + 1)) + Colors.DARK_GRAY + "in " + path + Colors.NORMAL);
       }
     }
   }
 
-  /**
-   * @param entry
-   * @return
-   */
-  private String extractHeader(final String label, final LogEntry entry) {
 
-    final String useLabel;
-    if (label == null) {
-      useLabel = "";
-    }
-    else {
-      useLabel = " in " + Colors.YELLOW + label + Colors.NORMAL;
-    }
-
-    return Colors.GREEN + entry.getRevision() + Colors.NORMAL + useLabel + " by " + Colors.BOLD + entry.getAuthor() + Colors.NORMAL + ": ";
-  }
 
   /**
    * @param entry
@@ -179,19 +163,16 @@ public final class Kermit extends PircBot implements LogListener {
       return path;
     }
     catch (final ArrayIndexOutOfBoundsException e) {
-      System.out.println("Failed extracting paths for " + entry.getRevision());
+      System.out.println("Failed extracting paths for " + entry.getChangeID());
       System.out.println(Arrays.toString(changedPaths.toArray()));
       throw e;
     }
   }
 
   /**
-   * @param entry
-   * @return
+   * Limit a string to a given length (plus three for the ... that gets appended if we truncate).
    */
-  private String extractLogMessage(final LogEntry entry) {
-    final String rawMessage = entry.getMessage().split("\n")[0];
-
+  private static String limitMessageLength(final String rawMessage) {
     if (rawMessage.length() < MAX_MESSAGE_LENGTH) {
       return rawMessage;
     }

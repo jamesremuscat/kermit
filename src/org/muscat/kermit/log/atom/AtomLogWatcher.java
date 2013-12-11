@@ -47,7 +47,7 @@ public abstract class AtomLogWatcher extends LogWatcher {
     final Set<String> changesets = new LinkedHashSet<String>();
 
     for (final LogEntry e : logs) {
-      changesets.add(e.getRevision());
+      changesets.add(e.getChangeID());
     }
 
     return Collections.unmodifiableSet(changesets);
@@ -66,7 +66,7 @@ public abstract class AtomLogWatcher extends LogWatcher {
       final Collection<LogEntry> toNotify = new LinkedHashSet<LogEntry>();
 
       for (final LogEntry change : changes) {
-        if (!_seenChanges.contains(change.getRevision())) {
+        if (!_seenChanges.contains(change.getChangeID())) {
           toNotify.add(change);
         }
       }

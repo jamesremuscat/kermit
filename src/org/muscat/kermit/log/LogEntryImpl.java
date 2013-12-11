@@ -2,16 +2,20 @@ package org.muscat.kermit.log;
 
 import java.util.Set;
 
+import org.jibble.pircbot.Colors;
+
 public class LogEntryImpl implements LogEntry {
 
   private final String _author;
   private final String _message;
   private final String _revision;
   private final Set<String> _changedPaths;
+  private final String _label;
 
-  public LogEntryImpl(final String revision, final String author, final String message, final Set<String> changedPaths) {
+  public LogEntryImpl(final String label, final String revision, final String author, final String logMessage, final Set<String> changedPaths) {
+    _label = label;
     _author = author;
-    _message = message;
+    _message = logMessage;
     _revision = revision;
     _changedPaths = changedPaths;
   }
@@ -21,10 +25,10 @@ public class LogEntryImpl implements LogEntry {
   }
 
   public String getMessage() {
-    return _message;
+    return Colors.GREEN + getChangeID() + Colors.NORMAL + " in " + Colors.YELLOW + _label +  Colors.NORMAL + " by " + Colors.BOLD + getAuthor() + Colors.NORMAL + ": " + _message.split("\n")[0];
   }
 
-  public String getRevision() {
+  public String getChangeID() {
     return _revision;
   }
 
