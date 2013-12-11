@@ -1,6 +1,7 @@
 package org.muscat.kermit;
 
 import org.muscat.kermit.log.LogWatcher;
+import org.muscat.kermit.log.devstats.StoryStateWatcher;
 import org.muscat.kermit.log.hg.HgLogWatcher;
 import org.muscat.kermit.log.quips.QuipsAtomFeedWatcher;
 import org.muscat.kermit.log.reviki.RevikiRecentChangesWatcher;
@@ -100,8 +101,14 @@ public class WatchedPath {
       public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
         return new QuipsAtomFeedWatcher(path);
       }
-    }
-    ;
+    },
+    STORYSTATS {
+
+      @Override
+      public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
+        return new StoryStateWatcher(path);
+      }
+    };
 
     public abstract LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException;
 
@@ -117,6 +124,9 @@ public class WatchedPath {
       }
       if ("quips".equalsIgnoreCase(s)) {
         return QUIPS;
+      }
+      if ("stories".equalsIgnoreCase(s)) {
+        return STORYSTATS;
       }
       throw new PathWatcherException("Unknown path type: " + s);
     }
