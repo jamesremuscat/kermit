@@ -14,3 +14,4 @@ ROMP wiki!reviki!https://wiki.int.corefiling.com/romp/RecentChanges?ctype=atom
 Magnify wiki!reviki!https://wiki.int.corefiling.com/magnify/RecentChanges?ctype=atom
 Quips List!quips!http://www.int.corefiling.com/~jrem/quips.php
 UnityXBRL Hg!hg!https://hg-dev.int.corefiling.com/hg/ps/projects/unityXBRL/atom-log
+Magnify Stories!stories!http://dev-reports.pd.test/story-stats/stories.cgi?project=magnify&view=by-phase&hide_complete=1
