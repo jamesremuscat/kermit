@@ -39,7 +39,7 @@ public class StoryStates {
       else {
         // story has been deleted
         entries.add(new LogEntry() {
-          @Override public String getMessage() { return "Story " + Colors.GREEN + story + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.RED + "deleted" + Colors.NORMAL; }
+          @Override public String getMessage() { return Colors.GREEN + story + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.RED + "deleted" + Colors.NORMAL; }
           @Override public Set<String> getChangedPaths() { return Collections.singleton(story);  }
           @Override public String getChangeID() { return story; }
         });
@@ -50,7 +50,7 @@ public class StoryStates {
         if (!_states.containsKey(newStory)) {
           // story has been added
           entries.add(new LogEntry() {
-            @Override public String getMessage() { return "Story " + Colors.GREEN + story + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + newStates.getState(story) + ")"; }
+            @Override public String getMessage() { return Colors.GREEN + story + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + newStates.getState(story) + ")"; }
             @Override public Set<String> getChangedPaths() { return Collections.singleton(story);  }
             @Override public String getChangeID() { return story; }
           });
@@ -82,7 +82,7 @@ public class StoryStates {
 
     @Override
     public String getMessage() {
-      return "Story " + Colors.GREEN + _story + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " changed from " + _oldState.toString() + " to " + Colors.BOLD + _newState.toString() + Colors.NORMAL;
+      return Colors.GREEN + _story + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " changed from " + _oldState.toString() + " to " + Colors.BOLD + _newState.toString() + Colors.NORMAL;
     }
 
     @Override
