@@ -24,7 +24,7 @@ public class StoryStateWatcher extends LogWatcher {
   protected void checkUpdates() {
     final StoryStates newStates = StoryStatesParser.parse(getPath().getPath());
 
-    final Set<LogEntry> changes = _lastStates.compareTo(newStates);
+    final Set<LogEntry> changes = _lastStates.getChangesTo(getPath().getLabel(), newStates);
 
     notifyAllListeners(changes);
 
