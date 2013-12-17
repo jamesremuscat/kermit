@@ -31,4 +31,9 @@ public class StoryStateWatcher extends LogWatcher {
     _lastStates = newStates;
   }
 
+  @Override
+  protected int getRefreshDelay() {
+    return 5 * 60 * 1000; // Five minutes
+  }
+
 }

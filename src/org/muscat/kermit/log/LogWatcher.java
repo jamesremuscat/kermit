@@ -8,6 +8,8 @@ import org.muscat.kermit.WatchedPath;
 
 public abstract class LogWatcher implements Runnable {
 
+  private static final int REFRESH_DELAY = 30000;
+
   private final Set<LogListener> _listeners = new LinkedHashSet<LogListener>();
   private boolean _keepRunning;
   private final WatchedPath _path;
@@ -60,7 +62,7 @@ public abstract class LogWatcher implements Runnable {
       checkUpdates();
 
       try {
-        Thread.sleep(30000);
+        Thread.sleep(getRefreshDelay());
       }
       catch (final InterruptedException e) {
         // fine, I'll carry on now
@@ -69,6 +71,13 @@ public abstract class LogWatcher implements Runnable {
 
     System.out.println("Finished listener for " + _path.toString());
 
+  }
+
+  /**
+   * @return Time in milliseconds between refreshes
+   */
+  protected int getRefreshDelay() {
+    return REFRESH_DELAY;
   }
 
   /**
