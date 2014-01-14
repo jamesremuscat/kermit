@@ -128,12 +128,14 @@ public final class Kermit extends PircBot implements LogListener {
   public synchronized void logEntries(final Collection<LogEntry> entries) {
     for (final LogEntry entry : entries) {
       for (final String chan : getChannels()) {
-        final String path = extractPaths(entry);
         sendMessage(chan, limitMessageLength(entry.getMessage()));
 
-        final long numSpaces = Math.round(Math.floor(entry.getChangeID().length()));
+        if (!entry.getChangedPaths().isEmpty()) {
+          final String path = extractPaths(entry);
+          final long numSpaces = Math.round(Math.floor(entry.getChangeID().length()));
 
-        sendMessage(chan, StringUtils.spaces((int) (numSpaces + 1)) + Colors.DARK_GRAY + "in " + path + Colors.NORMAL);
+          sendMessage(chan, StringUtils.spaces((int) (numSpaces + 1)) + Colors.DARK_GRAY + "in " + path + Colors.NORMAL);
+        }
       }
     }
   }
