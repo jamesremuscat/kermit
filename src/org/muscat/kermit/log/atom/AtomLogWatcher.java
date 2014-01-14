@@ -17,10 +17,15 @@ public abstract class AtomLogWatcher extends LogWatcher {
   private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssXXX";
 
   private final Set<String> _seenChanges = new LinkedHashSet<String>();
-  private final AtomParser _parser = new AtomParser();
+  private final AtomParser _parser;
 
   public AtomLogWatcher(final WatchedPath logPath) {
+    this(new AtomParser(), logPath);
+  }
+
+  public AtomLogWatcher(final AtomParser parser, final WatchedPath logPath) {
     super(logPath);
+    _parser = parser;
     _parser.setRevisionPrefix(getRevisionPrefix());
     _parser.setDateFormat(getDateFormatString());
     _parser.setLabel(getPath().getLabel());
