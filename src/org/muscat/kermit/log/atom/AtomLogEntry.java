@@ -15,6 +15,10 @@ public class AtomLogEntry extends LogEntryImpl implements LogEntry {
     _date = date;
   }
 
+  public String getRawMessage() {
+    return getOriginalMessage();
+  }
+
   public Date getDate() {
     return _date;
   }

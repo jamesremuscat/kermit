@@ -28,6 +28,10 @@ public class LogEntryImpl implements LogEntry {
     return Colors.GREEN + getChangeID() + Colors.NORMAL + " in " + Colors.YELLOW + _label +  Colors.NORMAL + " by " + Colors.BOLD + getAuthor() + Colors.NORMAL + ": " + _message.split("\n")[0];
   }
 
+  protected String getOriginalMessage() {
+    return _message;
+  }
+
   public String getChangeID() {
     return _revision;
   }
