@@ -52,6 +52,10 @@ public class StoryStatesParser {
       e.printStackTrace();
     }
 
+    if (states.size() == 0) {
+      System.out.println("WARNING Got no stories at " + url);
+    }
+
     return states;
   }
 

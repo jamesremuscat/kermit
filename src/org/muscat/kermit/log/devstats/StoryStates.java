@@ -21,6 +21,10 @@ public class StoryStates {
     return _states.containsKey(story);
   }
 
+  public int size() {
+    return _states.size();
+  }
+
   public StoryState getState(final String story) {
     return _states.get(story);
   }
