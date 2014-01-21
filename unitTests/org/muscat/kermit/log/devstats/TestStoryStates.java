@@ -30,6 +30,7 @@ public class TestStoryStates extends TestCase {
     final Set<LogEntry> changesTo = old.getChangesTo("Baz", noo);
 
     assertEquals(1, changesTo.size());
+    assertEquals("09Bar in 08Baz has been 09created (InProgress)", changesTo.iterator().next().getMessage());
 
   }
 

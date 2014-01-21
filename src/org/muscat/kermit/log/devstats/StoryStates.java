@@ -48,21 +48,21 @@ public class StoryStates {
           @Override public String getChangeID() { return story; }
         });
       }
+    }
 
-      for (final String newStory : newStates._states.keySet()) {
+    for (final String newStory : newStates._states.keySet()) {
 
-        if (!_states.containsKey(newStory)) {
-          // story has been added
-          entries.add(new LogEntry() {
-            @Override public String getMessage() { return Colors.GREEN + story + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + newStates.getState(story) + ")"; }
-            @Override public Set<String> getChangedPaths() { return Collections.singleton(story);  }
-            @Override public String getChangeID() { return story; }
-          });
-        }
-
+      if (!_states.containsKey(newStory)) {
+        // story has been added
+        entries.add(new LogEntry() {
+          @Override public String getMessage() { return Colors.GREEN + newStory + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + newStates.getState(newStory) + ")"; }
+          @Override public Set<String> getChangedPaths() { return Collections.singleton(newStory);  }
+          @Override public String getChangeID() { return newStory; }
+        });
       }
 
     }
+
 
     return entries;
   }

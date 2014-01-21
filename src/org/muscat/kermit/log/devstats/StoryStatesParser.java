@@ -48,7 +48,7 @@ public class StoryStatesParser {
 
     }
     catch (final Exception e) {
-      // eh, we tried
+      System.err.println("Exception was thrown when trying to parse " + url);
       e.printStackTrace();
     }
 
