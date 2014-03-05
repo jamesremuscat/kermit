@@ -42,11 +42,7 @@ public class StoryStates {
       }
       else {
         // story has been deleted
-        entries.add(new LogEntry() {
-          @Override public String getMessage() { return Colors.GREEN + story + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.RED + "deleted" + Colors.NORMAL; }
-          @Override public Set<String> getChangedPaths() { return Collections.singleton(story);  }
-          @Override public String getChangeID() { return story; }
-        });
+        entries.add(new StoryDeletedEntry(label, story));
       }
     }
 
@@ -54,17 +50,52 @@ public class StoryStates {
 
       if (!_states.containsKey(newStory)) {
         // story has been added
-        entries.add(new LogEntry() {
-          @Override public String getMessage() { return Colors.GREEN + newStory + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + newStates.getState(newStory) + ")"; }
-          @Override public Set<String> getChangedPaths() { return Collections.singleton(newStory);  }
-          @Override public String getChangeID() { return newStory; }
-        });
+        entries.add(new StoryAddedEntry(newStates, label, newStory));
       }
 
     }
 
 
     return entries;
+  }
+
+
+  private final class StoryAddedEntry implements LogEntry {
+    private final StoryStates _newStates;
+
+    private final String _label;
+
+    private final String _newStory;
+
+    private StoryAddedEntry(StoryStates newStates, String label, String newStory) {
+      _newStates = newStates;
+      _label = label;
+      _newStory = newStory;
+    }
+
+    @Override public String getMessage() { return Colors.GREEN + _newStory + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + _newStates.getState(_newStory) + ")"; }
+
+    @Override public Set<String> getChangedPaths() { return Collections.singleton(_newStory);  }
+
+    @Override public String getChangeID() { return _newStory; }
+  }
+
+
+  private final class StoryDeletedEntry implements LogEntry {
+    private final String _label;
+
+    private final String _story;
+
+    private StoryDeletedEntry(String label, String story) {
+      _label = label;
+      _story = story;
+    }
+
+    @Override public String getMessage() { return Colors.GREEN + _story + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " has been " + Colors.RED + "deleted" + Colors.NORMAL; }
+
+    @Override public Set<String> getChangedPaths() { return Collections.singleton(_story);  }
+
+    @Override public String getChangeID() { return _story; }
   }
 
 
