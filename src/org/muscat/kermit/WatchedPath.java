@@ -6,6 +6,7 @@ import org.muscat.kermit.log.hg.HgLogWatcher;
 import org.muscat.kermit.log.quips.QuipsAtomFeedWatcher;
 import org.muscat.kermit.log.reviki.RevikiRecentChangesWatcher;
 import org.muscat.kermit.log.svn.SVNLogWatcher;
+import org.muscat.kermit.log.tntfl.TNTFLWatcher;
 import org.tmatesoft.svn.core.SVNException;
 
 public class WatchedPath {
@@ -103,10 +104,15 @@ public class WatchedPath {
       }
     },
     STORYSTATS {
-
       @Override
       public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
         return new StoryStateWatcher(path);
+      }
+    },
+    TNTFL {
+      @Override
+      public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
+        return new TNTFLWatcher(path);
       }
     };
 
@@ -127,6 +133,9 @@ public class WatchedPath {
       }
       if ("stories".equalsIgnoreCase(s)) {
         return STORYSTATS;
+      }
+      if ("tntfl".equalsIgnoreCase(s)) {
+        return TNTFL;
       }
       throw new PathWatcherException("Unknown path type: " + s);
     }
