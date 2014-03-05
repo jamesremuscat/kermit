@@ -1,3 +1,4 @@
+TNTFL!tntfl!http://www.int.corefiling.com/~aks/football/rest.cgi?mode=recent
 devel!svn!https://svn-dev.int.corefiling.com/svn/devel
 usr!svn!https://svn-dev.int.corefiling.com/svn/usr
 RIM!svn!https://svn-rim.int.corefiling.com/svn/
@@ -16,3 +17,4 @@ Product wiki!reviki!https://wiki.int.corefiling.com/product/RecentChanges?ctype=
 Quips List!quips!http://www.int.corefiling.com/~jrem/quips.php
 UnityXBRL Hg!hg!https://hg-dev.int.corefiling.com/hg/ps/projects/unityXBRL/atom-log
 Magnify Stories!stories!http://dev-reports.pd.test/story-stats/stories.cgi?project=magnify&view=by-phase&hide_complete=1
+SpiderMonkey Stories!stories!http://dev-reports.pd.test/story-stats/stories.cgi?project=spidermonkey&view=by-phase&hide_complete=1
