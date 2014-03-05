@@ -67,7 +67,7 @@ public class StoryStates {
 
     private final String _newStory;
 
-    private StoryAddedEntry(StoryStates newStates, String label, String newStory) {
+    private StoryAddedEntry(final StoryStates newStates, final String label, final String newStory) {
       _newStates = newStates;
       _label = label;
       _newStory = newStory;
@@ -75,7 +75,7 @@ public class StoryStates {
 
     @Override public String getMessage() { return Colors.GREEN + _newStory + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + _newStates.getState(_newStory) + ")"; }
 
-    @Override public Set<String> getChangedPaths() { return Collections.singleton(_newStory);  }
+    @Override public Set<String> getChangedPaths() { return Collections.emptySet();  }
 
     @Override public String getChangeID() { return _newStory; }
   }
@@ -86,7 +86,7 @@ public class StoryStates {
 
     private final String _story;
 
-    private StoryDeletedEntry(String label, String story) {
+    private StoryDeletedEntry(final String label, final String story) {
       _label = label;
       _story = story;
     }
