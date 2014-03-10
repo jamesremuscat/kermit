@@ -109,9 +109,24 @@ public class TNTFLWatcher extends LogWatcher {
     public String getMessage() {
       final StringBuilder b = new StringBuilder();
       b.append(Colors.GREEN + "FINAL SCORE: ");
-      b.append(Colors.RED + _game.getRedPlayer());
-      b.append(Colors.NORMAL + " " + _game.getRedScore() + " - " + _game.getBlueScore() + " ");
-      b.append(Colors.BLUE + _game.getBluePlayer() + Colors.NORMAL);
+      if (_game.getRedScore() == 10) {
+        b.append(Colors.YELLOW + _game.getRedPlayer());
+        b.append(" " + _game.getRedScore() + Colors.NORMAL);
+      }
+      else {
+        b.append(Colors.RED + _game.getRedPlayer());
+        b.append(Colors.NORMAL + " " + _game.getRedScore());
+      }
+      b.append(" - ");
+
+      if (_game.getBlueScore() == 10) {
+        b.append (Colors.YELLOW + _game.getBlueScore() + " ");
+        b.append(_game.getBluePlayer() + Colors.NORMAL);
+      }
+      else {
+        b.append (_game.getBlueScore() + " ");
+        b.append(Colors.BLUE + _game.getBluePlayer() + Colors.NORMAL);
+      }
 
       b.append(" (Skill change ");
 
