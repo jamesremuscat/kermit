@@ -186,7 +186,9 @@ public final class Kermit extends PircBot implements LogListener {
   @Override
   protected void onJoin(final String channel, final String sender, final String login, final String hostname) {
     super.onJoin(channel, sender, login, hostname);
-    sendMessage(channel, "Hey-ho everybody!"); //, the repository is at revision " + Colors.GREEN + _watcher.getLatestRevision() + Colors.NORMAL);
+    if (sender.equals(getNick())) {
+      sendMessage(channel, "Hey-ho everybody!");
+    }
   }
 
   /**
