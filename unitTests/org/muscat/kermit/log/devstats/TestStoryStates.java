@@ -14,7 +14,7 @@ public class TestStoryStates extends TestCase {
 
     assertTrue(ss.getChangesTo("blort", ss).isEmpty());
 
-    ss.add("Foo", StoryState.AWAITING_STORY_SIGN_OFF);
+    ss.add("Foo", "--", StoryState.AWAITING_STORY_SIGN_OFF);
 
     assertTrue(ss.getChangesTo("blort", ss).isEmpty());
   }
@@ -23,9 +23,9 @@ public class TestStoryStates extends TestCase {
     final StoryStates old = new StoryStates();
     final StoryStates noo = new StoryStates();
 
-    old.add("Foo", StoryState.IN_PROGRESS);
-    noo.add("Foo", StoryState.IN_PROGRESS);
-    noo.add("Bar", StoryState.IN_PROGRESS);
+    old.add("Foo", "--", StoryState.IN_PROGRESS);
+    noo.add("Foo", "--", StoryState.IN_PROGRESS);
+    noo.add("Bar", "--", StoryState.IN_PROGRESS);
 
     final Set<LogEntry> changesTo = old.getChangesTo("Baz", noo);
 

@@ -11,10 +11,10 @@ import org.muscat.kermit.log.LogEntry;
 
 public class StoryStates {
 
-  private final Map<String, StoryState> _states = new LinkedHashMap<String, StoryState>();
+  private final Map<String, Story> _states = new LinkedHashMap<String, Story>();
 
-  public void add(final String story, final StoryState state) {
-    _states.put(story, state);
+  public void add(final String story, final String phase, final StoryState state) {
+    _states.put(story, new Story(phase, state));
   }
 
   public boolean hasStory(final String story) {
@@ -25,24 +25,49 @@ public class StoryStates {
     return _states.size();
   }
 
-  public StoryState getState(final String story) {
+  public Story getStory(final String story) {
     return _states.get(story);
   }
 
   public Set<LogEntry> getChangesTo(final String label, final StoryStates newStates) {
     final Set<LogEntry> entries = new LinkedHashSet<LogEntry>();
 
-    for (final String story : _states.keySet()) {
-      if (newStates._states.containsKey(story)) {
-        final StoryState oldState = getState(story);
-        final StoryState newState = newStates.getState(story);
+    for (final String storyName : _states.keySet()) {
+      if (newStates._states.containsKey(storyName)) {
+
+        final Story oldStory = getStory(storyName);
+        final StoryState oldState = oldStory.getState();
+
+        final Story newStory = newStates.getStory(storyName);
+        final StoryState newState = newStory.getState();
         if (oldState != newState) {
-          entries.add(new StoryStateChangedEntry(label, oldState, newState, story));
+          entries.add(new StoryStateChangedEntry(label, oldState, newState, storyName));
         }
+
+        if (!oldStory.getPhase().equals(newStory.getPhase())) {
+          entries.add(new LogEntry() {
+
+            @Override
+            public String getMessage() {
+              return Colors.GREEN + storyName + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has moved from " + oldStory.getPhase() + " to " + Colors.BOLD + newStory.getPhase() + Colors.NORMAL;
+            }
+
+            @Override
+            public Set<String> getChangedPaths() {
+              return Collections.singleton(storyName);
+            }
+
+            @Override
+            public String getChangeID() {
+              return storyName;
+            }
+          });
+        }
+
       }
       else {
         // story has been deleted
-        entries.add(new StoryDeletedEntry(label, story));
+        entries.add(new StoryDeletedEntry(label, storyName));
       }
     }
 
@@ -73,7 +98,7 @@ public class StoryStates {
       _newStory = newStory;
     }
 
-    @Override public String getMessage() { return Colors.GREEN + _newStory + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + _newStates.getState(_newStory) + ")"; }
+    @Override public String getMessage() { return Colors.GREEN + _newStory + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + _newStates.getStory(_newStory) + ")"; }
 
     @Override public Set<String> getChangedPaths() { return Collections.emptySet();  }
 
