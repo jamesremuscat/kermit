@@ -34,4 +34,17 @@ public class TestStoryStates extends TestCase {
 
   }
 
+  public void testStoryMoved() {
+    final StoryStates old = new StoryStates();
+    final StoryStates noo = new StoryStates();
+
+    old.add("Foo", "Iteration1", StoryState.IMPLEMENTATION_REQUIRED);
+    noo.add("Foo", "Iteration2", StoryState.IMPLEMENTATION_REQUIRED);
+
+    final Set<LogEntry> changesTo = old.getChangesTo("Baz", noo);
+
+    assertEquals(1, changesTo.size());
+    assertEquals("09Foo in 08Baz has moved from Iteration1 to Iteration2", changesTo.iterator().next().getMessage());
+  }
+
 }

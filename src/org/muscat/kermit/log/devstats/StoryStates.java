@@ -98,7 +98,7 @@ public class StoryStates {
       _newStory = newStory;
     }
 
-    @Override public String getMessage() { return Colors.GREEN + _newStory + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + _newStates.getStory(_newStory) + ")"; }
+    @Override public String getMessage() { return Colors.GREEN + _newStory + Colors.NORMAL + " in " + Colors.YELLOW + _label + Colors.NORMAL + " has been " + Colors.GREEN + "created" + Colors.NORMAL + " (" + _newStates.getStory(_newStory).getState() + ")"; }
 
     @Override public Set<String> getChangedPaths() { return Collections.emptySet();  }
 
