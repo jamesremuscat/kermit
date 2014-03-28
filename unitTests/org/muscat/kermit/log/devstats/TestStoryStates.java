@@ -1,5 +1,6 @@
 package org.muscat.kermit.log.devstats;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import junit.framework.TestCase;
@@ -45,6 +46,21 @@ public class TestStoryStates extends TestCase {
 
     assertEquals(1, changesTo.size());
     assertEquals("09Foo in 08Baz has moved from Iteration1 to Iteration2", changesTo.iterator().next().getMessage());
+  }
+
+  public void testStoryMovedAndChangedState() {
+    final StoryStates old = new StoryStates();
+    final StoryStates noo = new StoryStates();
+
+    old.add("Foo", "Iteration1", StoryState.IMPLEMENTATION_REQUIRED);
+    noo.add("Foo", "Iteration2", StoryState.IN_PROGRESS);
+
+    final Set<LogEntry> changesTo = old.getChangesTo("Baz", noo);
+
+    final Iterator<LogEntry> iterator = changesTo.iterator();
+    assertEquals(2, changesTo.size());
+    assertEquals("09Foo in 08Baz changed from ImplementationRequired to InProgress", iterator.next().getMessage());
+    assertEquals("09Foo in 08Baz has moved from Iteration1 to Iteration2", iterator.next().getMessage());
   }
 
 }
