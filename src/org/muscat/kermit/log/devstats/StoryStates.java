@@ -13,8 +13,8 @@ public class StoryStates {
 
   private final Map<String, Story> _states = new LinkedHashMap<String, Story>();
 
-  public void add(final String story, final String phase, final StoryState state) {
-    _states.put(story, new Story(phase, state));
+  public void add(final String story, final String phase, final StoryState state, final String priority) {
+    _states.put(story, new Story(phase, state, priority));
   }
 
   public boolean hasStory(final String story) {
@@ -50,6 +50,26 @@ public class StoryStates {
             @Override
             public String getMessage() {
               return Colors.GREEN + storyName + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " has moved from " + oldStory.getPhase() + " to " + Colors.BOLD + newStory.getPhase() + Colors.NORMAL;
+            }
+
+            @Override
+            public Set<String> getChangedPaths() {
+              return Collections.singleton(storyName);
+            }
+
+            @Override
+            public String getChangeID() {
+              return storyName;
+            }
+          });
+        }
+
+        if (!oldStory.getPriority().equals(newStory.getPriority())) {
+          entries.add(new LogEntry() {
+
+            @Override
+            public String getMessage() {
+              return Colors.GREEN + storyName + Colors.NORMAL + " in " + Colors.YELLOW + label + Colors.NORMAL + " changed priority from " + oldStory.getPriority() + " to " + Colors.BOLD + newStory.getPriority() + Colors.NORMAL;
             }
 
             @Override

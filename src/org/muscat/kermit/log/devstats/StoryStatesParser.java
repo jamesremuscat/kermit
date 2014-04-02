@@ -40,8 +40,9 @@ public class StoryStatesParser {
         if ("td".equals(firstChild.getLocalName()) && "2".equals(colspan) && firstChild.hasChildNodes()) {
           final String storyName = firstChild.getChildNodes().item(1).getTextContent().trim();
           final String state = storyRow.getChildNodes().item(3).getChildNodes().item(0).getTextContent().trim();
+          final String priority = storyRow.getChildNodes().item(3).getChildNodes().item(0).getTextContent().trim();
           final String phase = storyRow.getChildNodes().item(5).getChildNodes().item(0).getTextContent().trim();
-          states.add(storyName, phase, StoryState.fromStringForm(state));
+          states.add(storyName, phase, StoryState.fromStringForm(state), priority);
         }
 
       }
