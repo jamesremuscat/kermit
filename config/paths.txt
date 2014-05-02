@@ -14,5 +14,5 @@ Magnify wiki!reviki!https://wiki.int.corefiling.com/magnify/RecentChanges?ctype=
 Product wiki!reviki!https://wiki.int.corefiling.com/product/RecentChanges?ctype=atom
 Quips List!quips!http://www.int.corefiling.com/~jrem/quips.php
 UnityXBRL Hg!hg!https://hg-dev.int.corefiling.com/hg/ps/projects/unityXBRL/atom-log
-Magnify Stories!stories!http://dev-reports.pd.test/story-stats/stories.cgi?project=magnify&view=by-phase&hide_complete=1
-SpiderMonkey Stories!stories!http://dev-reports.pd.test/story-stats/stories.cgi?project=spidermonkey&view=by-phase&hide_complete=1
+Magnify Stories!stories!http://dev-reports.pd.test/story-stats/stories.cgi?project=magnify&view=by-phase
+SpiderMonkey Stories!stories!http://dev-reports.pd.test/story-stats/stories.cgi?project=spidermonkey&view=by-phase
