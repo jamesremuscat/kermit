@@ -138,7 +138,9 @@ public class SubscriptionStore implements Serializable {
       ObjectInputStream in;
       try {
         in = new ObjectInputStream(new FileInputStream(source));
-        return (SubscriptionStore) in.readObject();
+        final SubscriptionStore readObject = (SubscriptionStore) in.readObject();
+        in.close();
+        return readObject;
       }
       catch (final Exception e) {
         System.err.println("Exception while trying to read in a serializable store: " + e.getMessage() + ". Using a volatile store for this session.");
