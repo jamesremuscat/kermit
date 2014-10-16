@@ -108,8 +108,11 @@ public class TNTFLWatcher extends LogWatcher {
     @Override
     public String getMessage() {
       final StringBuilder b = new StringBuilder();
+
+      final int totalGoals = _game.getBlueScore() + _game.getRedScore();
+
       b.append(Colors.GREEN + "FINAL SCORE: ");
-      if (_game.getRedScore() == 10) {
+      if (_game.getRedScore() == totalGoals) {
         b.append(Colors.YELLOW + _game.getRedPlayer());
         b.append(" " + _game.getRedScore() + Colors.NORMAL);
       }
@@ -119,7 +122,7 @@ public class TNTFLWatcher extends LogWatcher {
       }
       b.append(" - ");
 
-      if (_game.getBlueScore() == 10) {
+      if (_game.getBlueScore() == totalGoals) {
         b.append (Colors.YELLOW + _game.getBlueScore() + " ");
         b.append(_game.getBluePlayer() + Colors.NORMAL);
       }
