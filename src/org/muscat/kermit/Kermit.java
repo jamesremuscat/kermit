@@ -200,7 +200,7 @@ public final class Kermit extends PircBot implements LogListener {
     String nick = "Kermit";
 
     String server = "irc.int.corefiling.com";
-    String channel = "#botTest";
+    String channel = "#kermit";
 
     final Properties properties = new Properties();
     try {
@@ -208,19 +208,24 @@ public final class Kermit extends PircBot implements LogListener {
 
       if (properties.containsKey("server")) {
         server = properties.getProperty("server");
+        System.out.println("Set server to " + server);
       }
 
       if (properties.containsKey("channel")) {
         channel = properties.getProperty("channel");
+        System.out.println("Set channel to " + channel);
       }
 
       if (properties.containsKey("nick")) {
         nick = properties.getProperty("nick");
+        System.out.println("Set nick to " + nick);
       }
 
     }
     catch (final Exception e1) {
       // do nothing, just use defaults
+      e1.printStackTrace();
+      System.out.println("Exception while loading properties, using defaults instead.");
     }
 
     final Kermit bot = new Kermit(nick);
