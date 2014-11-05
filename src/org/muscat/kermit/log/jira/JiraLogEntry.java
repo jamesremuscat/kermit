@@ -31,7 +31,7 @@ public class JiraLogEntry implements LogEntry {
   public String getMessage() {
     final StringBuilder b = new StringBuilder();
 
-    b.append(Colors.GREEN + "JIRA: " + Colors.NORMAL);
+    b.append(Colors.YELLOW + "JIRA" + Colors.NORMAL + ": ");
     b.append(Colors.BOLD + _username + Colors.NORMAL);
     b.append(": " + _title);
     if (!_content.isEmpty()) {
