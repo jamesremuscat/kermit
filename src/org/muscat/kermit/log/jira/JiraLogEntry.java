@@ -13,9 +13,11 @@ public class JiraLogEntry implements LogEntry {
   private final String _username;
   private final String _content;
   private final String _url;
+  private final String _objectTitle;
 
-  public JiraLogEntry(final String id, final String title, final String username, final String content, final String url) {
+  public JiraLogEntry(final String id, final String objectTitle, final String title, final String username, final String content, final String url) {
     _id = id;
+    _objectTitle = objectTitle;
     _title = title;
     _username = username;
     _content = content;
@@ -31,6 +33,7 @@ public class JiraLogEntry implements LogEntry {
   public String getMessage() {
     final StringBuilder b = new StringBuilder();
 
+    b.append(Colors.GREEN + _objectTitle + Colors.NORMAL + " in ");
     b.append(Colors.YELLOW + "JIRA" + Colors.NORMAL + ": ");
     b.append(Colors.BOLD + _username + Colors.NORMAL);
     b.append(": " + _title);

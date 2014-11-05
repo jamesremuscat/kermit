@@ -40,6 +40,7 @@ public class JiraFeedParser extends DefaultHandler {
   private String _username;
   private String _content;
   private String _url;
+  private String _objectTitle;
 
 
   public List<LogEntry> getChanges() {
@@ -75,6 +76,7 @@ public class JiraFeedParser extends DefaultHandler {
     if (ENTRY.equals(localName)) {
       _inEntry = true;
       _title = "";
+      _objectTitle = "";
       _id = "";
       _username = "";
       _content = "";
@@ -95,7 +97,7 @@ public class JiraFeedParser extends DefaultHandler {
   public void endElement(final String uri, final String localName, final String qName) throws SAXException {
     if (ENTRY.equals(localName)) {
       _inEntry = false;
-      _changes.add(new JiraLogEntry(_id, _title, _username, _content, _url));
+      _changes.add(new JiraLogEntry(_id, _objectTitle, _title, _username, _content, _url));
     }
     else if (("target".equals(localName) || "object".equals(localName)) && ACTIVITY_NAMESPACE.equals(uri)) {
       _inTarget = false;
@@ -112,6 +114,11 @@ public class JiraFeedParser extends DefaultHandler {
       }
       if ("content".equals(localName)) {
         _content = stripHTMLContent(_stringBuf);
+      }
+    }
+    if (_inTarget) {
+      if ("title".equals(localName)) {
+        _objectTitle = stripHTMLContent(_stringBuf);
       }
     }
   }
