@@ -1,1 +1,21 @@
+devel!svn!https://svn-dev.int.corefiling.com/svn/devel
+usr!svn!https://svn-dev.int.corefiling.com/svn/usr
+RIM!svn!https://svn-rim.int.corefiling.com/svn/
+HMRC corp svn!svn!https://svn-corp.int.corefiling.com/svn/companies/HMRC
+BaFin corp svn!svn!https://svn-corp.int.corefiling.com/svn/companies/BaFin
+LBG corp svn!svn!https://svn-corp.int.corefiling.com/svn/companies/LloydsBankingGroup
+TPReports Hg!hg!https://hg-dev.int.corefiling.com/hg/ps/projects/TPReports/atom-log
+RIM wiki!reviki!https://wiki.int.corefiling.com/rim/RecentChanges?ctype=atom
+CFL wiki!reviki!https://wiki.int.corefiling.com/cfl/RecentChanges?ctype=atom
+Dev wiki!reviki!https://wiki.int.corefiling.com/dev/RecentChanges?ctype=atom
+Consulting wiki!reviki!https://wiki.int.corefiling.com/consulting/RecentChanges?ctype=atom
+ROMP wiki!reviki!https://wiki.int.corefiling.com/romp/RecentChanges?ctype=atom
+Magnify wiki!reviki!https://wiki.int.corefiling.com/magnify/RecentChanges?ctype=atom
+Product wiki!reviki!https://wiki.int.corefiling.com/product/RecentChanges?ctype=atom
+Quips List!quips!http://www.int.corefiling.com/~jrem/quips.php
+UnityXBRL Hg!hg!https://hg-dev.int.corefiling.com/hg/ps/projects/unityXBRL/atom-log
+sys wiki!reviki!https://wiki.int.corefiling.com/sys/RecentChanges?ctype=atom
+XBRL svn (products)!svn!https://svn-xbrl.int.corefiling.com/svn/products
+Bigfoot website!svn!https://svn-dev.int.corefiling.com/svn/web/bigfoot.corefiling.com
+CFL website!svn!https://svn-dev.int.corefiling.com/svn/web/www.corefiling.com
 JIRA!jira!https://jira.int.corefiling.com/activity?maxResults=5
