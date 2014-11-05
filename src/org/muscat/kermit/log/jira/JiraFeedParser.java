@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.muscat.kermit.log.LogEntry;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -104,7 +105,7 @@ public class JiraFeedParser extends DefaultHandler {
     }
     if (_inEntry && !_inTarget) {
       if ("title".equals(localName)) {
-        _title = stripHTMLContent(_stringBuf);
+        _title = prepareHTMLContent(_stringBuf);
       }
       if ("id".equals(localName)) {
         _id = _stringBuf;
@@ -113,18 +114,18 @@ public class JiraFeedParser extends DefaultHandler {
         _username = _stringBuf;
       }
       if ("content".equals(localName)) {
-        _content = stripHTMLContent(_stringBuf);
+        _content = prepareHTMLContent(_stringBuf);
       }
     }
     if (_inTarget) {
       if ("title".equals(localName)) {
-        _objectTitle = stripHTMLContent(_stringBuf);
+        _objectTitle = prepareHTMLContent(_stringBuf);
       }
     }
   }
 
-  private static String stripHTMLContent(final String html) {
-    return html.replaceAll("<[^>]*>", "").replaceAll(" +", " ").replaceAll("\n", "").trim();
+  private static String prepareHTMLContent(final String html) {
+    return StringEscapeUtils.unescapeXml(html.replaceAll("<[^>]*>", "").replaceAll(" +", " ").replaceAll("\n", "").trim());
   }
 
   @Override
