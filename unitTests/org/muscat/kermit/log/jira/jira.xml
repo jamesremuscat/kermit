@@ -1,0 +1,417 @@
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:atlassian='http://streams.atlassian.com/syndication/general/1.0'>
+  <id>https://jira.int.corefiling.com/activity?maxResults=10</id>
+  <link href='https://jira.int.corefiling.com/activity?maxResults=10' rel='self' />
+  <title type='text'>Activity Streams</title>
+  <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  <updated>2014-10-30T15:08:00.974Z</updated>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/' xmlns:thr='http://purl.org/syndication/thread/1.0'>
+    <id>urn:uuid:b9dd237e-dae1-3625-aaf0-7e3b4c7cf37a</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=mth" class="activity-item-user activity-item-author">Matthew Hillsdon&lt;/a> commented on       &lt;a href="https://jira.int.corefiling.com/browse/TNFC-1480">TNFC-1480 - TNFC causes tomcat to eventually become unresponsive for BNM&lt;/a>
+  </title>
+    <content type='html'>&lt;blockquote>
+   &lt;p>Just took a look at this with &lt;a class="user-hover" href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=kab">Kimberley Ann Barrett&lt;/a> and it looks like we've reproduced it with a config change and form generation loop as described by &lt;a class="user-hover" href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msww">Matthew Wightman&lt;/a>&lt;/p>   &lt;/blockquote>
+</content>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Matthew Hillsdon</name>
+      <email>mth@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=mth</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>mth</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:55:52.461Z</published>
+    <updated>2014-10-30T14:55:52.461Z</updated>
+    <category term='comment' />
+    <link href='https://jira.int.corefiling.com/browse/TNFC-1480?focusedCommentId=380298&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380298' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <thr:in-reply-to ref='urn:uuid:928ebe76-2bc2-39dc-a391-86175b6c41e1' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <id>urn:uuid:28b93453-2416-3024-a6eb-90f6103a27cf</id>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1480?focusedCommentId=380298&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380298' rel='alternate' />
+      <activity:object-type>http://activitystrea.ms/schema/1.0/comment</activity:object-type>
+    </activity:object>
+    <activity:target>
+      <id>urn:uuid:928ebe76-2bc2-39dc-a391-86175b6c41e1</id>
+      <title type='text'>TNFC-1480</title>
+      <summary type='text'>TNFC causes tomcat to eventually become unresponsive for BNM</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1480' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:target>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/'>
+    <id>urn:uuid:d7532f6c-2b12-35d0-ab63-1d578ef0ec9d</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ejj" class="activity-item-user activity-item-author">Eleanor Joslin&lt;/a> started progress on       &lt;a href="https://jira.int.corefiling.com/browse/SM-16362">SM-16362 - Release build failing in command line test&lt;/a>
+  </title>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Eleanor Joslin</name>
+      <email>ejj@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ejj</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>ejj</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:52:36.549Z</published>
+    <updated>2014-10-30T14:52:36.549Z</updated>
+    <category term='started' />
+    <link href='https://jira.int.corefiling.com/browse/SM-16362' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/update</activity:verb>
+    <activity:verb>http://streams.atlassian.com/syndication/verbs/jira/transition</activity:verb>
+    <activity:verb>http://streams.atlassian.com/syndication/verbs/jira/start</activity:verb>
+    <activity:object>
+      <id>urn:uuid:fc1b8dff-ee8c-396b-a747-b50af2d90678</id>
+      <title type='text'>SM-16362</title>
+      <summary type='text'>Release build failing in command line test</summary>
+      <link href='https://jira.int.corefiling.com/browse/SM-16362' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:object>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/'>
+    <id>urn:uuid:175ea204-bd35-3b76-b8bb-b3e063d7b1c7</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ejj" class="activity-item-user activity-item-author">Eleanor Joslin&lt;/a> stopped progress on       &lt;a href="https://jira.int.corefiling.com/browse/SM-16362">SM-16362 - Release build failing in command line test&lt;/a>
+  </title>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Eleanor Joslin</name>
+      <email>ejj@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ejj</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>ejj</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:52:30.672Z</published>
+    <updated>2014-10-30T14:52:30.672Z</updated>
+    <category term='stopped' />
+    <link href='https://jira.int.corefiling.com/browse/SM-16362' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/update</activity:verb>
+    <activity:verb>http://streams.atlassian.com/syndication/verbs/jira/transition</activity:verb>
+    <activity:verb>http://streams.atlassian.com/syndication/verbs/jira/stop</activity:verb>
+    <activity:object>
+      <id>urn:uuid:fc1b8dff-ee8c-396b-a747-b50af2d90678</id>
+      <title type='text'>SM-16362</title>
+      <summary type='text'>Release build failing in command line test</summary>
+      <link href='https://jira.int.corefiling.com/browse/SM-16362' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:object>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/' xmlns:thr='http://purl.org/syndication/thread/1.0'>
+    <id>urn:uuid:f3d0c207-1898-3f55-b5b8-d42af936d5a4</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ejj" class="activity-item-user activity-item-author">Eleanor Joslin&lt;/a> commented on       &lt;a href="https://jira.int.corefiling.com/browse/SM-16362">SM-16362 - Release build failing in command line test&lt;/a>
+  </title>
+    <summary type='html'>&lt;blockquote>
+   &lt;p>Seems to be down to Team TN adding a dependency on com.corefiling.shared.testing to the api.readImpl plugin.  Even though SM already has the testing plugin, this somehow makes readImpl unusable, which in turn makes spidermonkey.app unusable, meaning&lt;/p>   &lt;a class="comment-more" href="https://jira.int.corefiling.com/browse/SM-16362?focusedCommentId=380297&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380297">Read more&lt;/a>&lt;/blockquote>
+</summary>
+    <content type='html'>&lt;blockquote>
+   &lt;p>Seems to be down to Team TN adding a dependency on com.corefiling.shared.testing to the api.readImpl plugin.  Even though SM already has the testing plugin, this somehow makes readImpl unusable, which in turn makes spidermonkey.app unusable, meaning the required application is unavailable.&lt;/p>
+
+&lt;p>esm says readImpl's dependency isn't needed any more because the test that required it has been moved into one of the enterprise.processor projects.&lt;/p>
+
+&lt;p>So I've removed the dependency in r422125.  We'll see what happens.&lt;/p>   &lt;/blockquote>
+</content>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Eleanor Joslin</name>
+      <email>ejj@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ejj</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>ejj</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:50:55.722Z</published>
+    <updated>2014-10-30T14:50:55.722Z</updated>
+    <category term='comment' />
+    <link href='https://jira.int.corefiling.com/browse/SM-16362?focusedCommentId=380297&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380297' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <thr:in-reply-to ref='urn:uuid:fc1b8dff-ee8c-396b-a747-b50af2d90678' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <id>urn:uuid:b8c32b62-a58b-389f-823a-43bc0e75cb4d</id>
+      <link href='https://jira.int.corefiling.com/browse/SM-16362?focusedCommentId=380297&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380297' rel='alternate' />
+      <activity:object-type>http://activitystrea.ms/schema/1.0/comment</activity:object-type>
+    </activity:object>
+    <activity:target>
+      <id>urn:uuid:fc1b8dff-ee8c-396b-a747-b50af2d90678</id>
+      <title type='text'>SM-16362</title>
+      <summary type='text'>Release build failing in command line test</summary>
+      <link href='https://jira.int.corefiling.com/browse/SM-16362' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:target>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/'>
+    <id>urn:uuid:6f62e44d-9dd8-3b40-9d48-3a5b3b9a949b</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=esm" class="activity-item-user activity-item-author">Emily&lt;/a> updated the Description of       &lt;a href="https://jira.int.corefiling.com/browse/TN-2996">TN-2996 - Avoid xbrl.core.dts.IllegalOverrideOfCoreSchemaError for alternative xbrl.org locations?&lt;/a>
+  </title>
+    <summary type='html'>&lt;div class="user-content">
+  &lt;p>True North issues an IllegalOverrideOfCoreSchemaError when it discovers a schema with the same namespace as built-in one, but at a location other than the official one.&lt;/p>
+
+&lt;p>The error is non-fatal, but it might cause unnecessary anxiety in some cases.&lt;/p>
+
+&lt;p>This is a rather strict error. We want to catch when someone is using a location for an xbrl.org schema not under the control of xbrl.org (e.g. local path or some entirely different domain), as the content there may be different. However, if they have used a location that is under the control of xbrl.org, then this really isn't a problem.&lt;/p> &lt;a class="content-more" href="https://jira.int.corefiling.com/browse/TN-2996">Read more&lt;/a>&lt;/div>
+</summary>
+    <content type='html'>&lt;div class="user-content">
+  &lt;p>True North issues an IllegalOverrideOfCoreSchemaError when it discovers a schema with the same namespace as built-in one, but at a location other than the official one.&lt;/p>
+
+&lt;p>The error is non-fatal, but it might cause unnecessary anxiety in some cases.&lt;/p>
+
+&lt;p>This is a rather strict error. We want to catch when someone is using a location for an xbrl.org schema not under the control of xbrl.org (e.g. local path or some entirely different domain), as the content there may be different. However, if they have used a location that is under the control of xbrl.org, then this really isn't a problem.&lt;/p>
+
+&lt;p>This has happened in the wild and causes TN to produce annoying messages. A taxonomy from Banco de Espa&amp;ntilde;a has an arcRoleRef to &lt;a class="external-link" href="http://xbrl.org/2008/variable.xsd" rel="nofollow">http://xbrl.org/2008/variable.xsd&lt;/a> rather than &lt;a class="external-link" href="http://www.xbrl.org/2008/variable.xsd" rel="nofollow">http://www.xbrl.org/2008/variable.xsd&lt;/a> (see msh's &lt;a class="external-link" href="http://lists.int.corefiling.com/message/20141001.145936.f66c3e8b.en.html" rel="nofollow">email to eftf&lt;/a>). The xbrl.org URL 302 redirects to the www.xbrl.org URL.&lt;/p>
+
+&lt;p>We should maintain an internal list of &amp;quot;known equivalent domains&amp;quot; with only &amp;quot;www.xbrl.org&amp;quot; == &amp;quot;xbrl.org&amp;quot; initially in that list. For the avoidance of doubt, the path of the URI must still match.&lt;/p>
+
+&lt;h2>&lt;a name="Remappings">&lt;/a>Remappings&lt;/h2>
+
+&lt;p>If you reference &lt;a class="external-link" href="http://www.xbrl.org/2008/variable.xsd" rel="nofollow">http://www.xbrl.org/2008/variable.xsd&lt;/a> we remap that to our built-in copy, but if you reference &lt;a class="external-link" href="http://xbrl.org/2008/variable.xsd" rel="nofollow">http://xbrl.org/2008/variable.xsd&lt;/a> we go to the web (which redirects to the www.xbrl.org version). &lt;/p>
+
+&lt;p>As we're these are equivalent, we should use the built-in copy for that too.&lt;/p>
+
+&lt;p>Core remappings are captured in catalog files, as explained on &lt;a class="external-link" href="https://wiki.int.corefiling.com/truenorth/BuiltInSchemas" rel="nofollow">this wiki page &lt;/a>. We were simply add xbrl.org variants to the catalogs, but should write a test to ensure that if future schemas are added they add both variants too.&lt;/p> &lt;/div>
+</content>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Emily</name>
+      <email>esm@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=esm</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>esm</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:46:24.459Z</published>
+    <updated>2014-10-30T14:46:24.459Z</updated>
+    <link href='https://jira.int.corefiling.com/browse/TN-2996' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/update</activity:verb>
+    <activity:object>
+      <id>urn:uuid:b6353e7f-70e1-3331-9582-0029d6646103</id>
+      <title type='text'>TN-2996</title>
+      <summary type='text'>Avoid xbrl.core.dts.IllegalOverrideOfCoreSchemaError for alternative xbrl.org locations?</summary>
+      <link href='https://jira.int.corefiling.com/browse/TN-2996' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:object>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/'>
+    <id>urn:uuid:8f8fb8f8-1d62-3b04-b340-3bfaec636a9b</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msh" class="activity-item-user activity-item-author">Mark Hearn&lt;/a> opened       &lt;a href="https://jira.int.corefiling.com/browse/TNFC-1400">TNFC-1400 - XBRL to CSV conversion drops some/most filing indicators for Solvency II&lt;/a>
+  </title>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Mark Hearn</name>
+      <email>msh@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msh</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>msh</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:40:28.821Z</published>
+    <updated>2014-10-30T14:40:28.821Z</updated>
+    <category term='opened' />
+    <link href='https://jira.int.corefiling.com/browse/TNFC-1400' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/update</activity:verb>
+    <activity:verb>http://streams.atlassian.com/syndication/verbs/jira/transition</activity:verb>
+    <activity:verb>http://streams.atlassian.com/syndication/verbs/jira/open</activity:verb>
+    <activity:object>
+      <id>urn:uuid:17400966-df03-344a-ba9f-9d0e6f346c83</id>
+      <title type='text'>TNFC-1400</title>
+      <summary type='text'>XBRL to CSV conversion drops some/most filing indicators for Solvency II</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1400' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:object>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/' xmlns:thr='http://purl.org/syndication/thread/1.0'>
+    <id>urn:uuid:b1704cfd-511d-30e5-96c6-dce91be09161</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msh" class="activity-item-user activity-item-author">Mark Hearn&lt;/a> commented on       &lt;a href="https://jira.int.corefiling.com/browse/TNFC-1400">TNFC-1400 - XBRL to CSV conversion drops some/most filing indicators for Solvency II&lt;/a>
+  </title>
+    <content type='html'>&lt;blockquote>
+   &lt;p>Note: we need to document what is out of scope here, but possible later. To be discussed between myself and &lt;a class="user-hover" href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=dtn">David North&lt;/a>.&lt;/p>   &lt;/blockquote>
+</content>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Mark Hearn</name>
+      <email>msh@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msh</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>msh</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:39:55.154Z</published>
+    <updated>2014-10-30T14:39:55.154Z</updated>
+    <category term='comment' />
+    <link href='https://jira.int.corefiling.com/browse/TNFC-1400?focusedCommentId=380296&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380296' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <thr:in-reply-to ref='urn:uuid:17400966-df03-344a-ba9f-9d0e6f346c83' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <id>urn:uuid:bafd7c69-0b80-38b8-835e-04cafd92b131</id>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1400?focusedCommentId=380296&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380296' rel='alternate' />
+      <activity:object-type>http://activitystrea.ms/schema/1.0/comment</activity:object-type>
+    </activity:object>
+    <activity:target>
+      <id>urn:uuid:17400966-df03-344a-ba9f-9d0e6f346c83</id>
+      <title type='text'>TNFC-1400</title>
+      <summary type='text'>XBRL to CSV conversion drops some/most filing indicators for Solvency II</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1400' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:target>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/' xmlns:thr='http://purl.org/syndication/thread/1.0'>
+    <id>urn:uuid:155f8f4c-1aea-3140-87ff-077be02ed048</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msh" class="activity-item-user activity-item-author">Mark Hearn&lt;/a> commented on       &lt;a href="https://jira.int.corefiling.com/browse/TNFC-1400">TNFC-1400 - XBRL to CSV conversion drops some/most filing indicators for Solvency II&lt;/a>
+  </title>
+    <summary type='html'>&lt;blockquote>
+   &lt;p>Outcome of discussion with &lt;a class="user-hover" href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=dtn">David North&lt;/a> and &lt;a class="user-hover" href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=js">Jon Siddle&lt;/a>:&lt;/p>
+
+&lt;p>We should support rows in CSVs where the table is specified but not x, y, and z provided that the rest of the fact's aspects are fully specified. This is what we should produce when converting&lt;/p>   &lt;a class="comment-more" href="https://jira.int.corefiling.com/browse/TNFC-1400?focusedCommentId=380295&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380295">Read more&lt;/a>&lt;/blockquote>
+</summary>
+    <content type='html'>&lt;blockquote>
+   &lt;p>Outcome of discussion with &lt;a class="user-hover" href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=dtn">David North&lt;/a> and &lt;a class="user-hover" href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=js">Jon Siddle&lt;/a>:&lt;/p>
+
+&lt;p>We should support rows in CSVs where the table is specified but not x, y, and z provided that the rest of the fact's aspects are fully specified. This is what we should produce when converting to CSVs in the case where RC codes are not specified, thus making round-trip possible.&lt;/p>   &lt;/blockquote>
+</content>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Mark Hearn</name>
+      <email>msh@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msh</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>msh</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:38:47.589Z</published>
+    <updated>2014-10-30T14:38:47.589Z</updated>
+    <category term='comment' />
+    <link href='https://jira.int.corefiling.com/browse/TNFC-1400?focusedCommentId=380295&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380295' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <thr:in-reply-to ref='urn:uuid:17400966-df03-344a-ba9f-9d0e6f346c83' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <id>urn:uuid:839551fd-3e34-3bf8-9283-8d3d9ca6d9a8</id>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1400?focusedCommentId=380295&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380295' rel='alternate' />
+      <activity:object-type>http://activitystrea.ms/schema/1.0/comment</activity:object-type>
+    </activity:object>
+    <activity:target>
+      <id>urn:uuid:17400966-df03-344a-ba9f-9d0e6f346c83</id>
+      <title type='text'>TNFC-1400</title>
+      <summary type='text'>XBRL to CSV conversion drops some/most filing indicators for Solvency II</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1400' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:target>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/'>
+    <id>urn:uuid:9eeb366d-6d05-3e16-9b77-e184f3d01b22</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ayj" class="activity-item-user activity-item-author">Alex John&lt;/a> updated the Rank of       &lt;a href="https://jira.int.corefiling.com/browse/TNXIIF-874">TNXIIF-874 - StoryIssueCauseForUnsupportedFeatures&lt;/a>
+  </title>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Alex John</name>
+      <email>ayj@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ayj</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10107&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10107&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>ayj</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:35:17.359Z</published>
+    <updated>2014-10-30T14:35:17.359Z</updated>
+    <link href='https://jira.int.corefiling.com/browse/TNXIIF-874' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/ico_story.png' rel='http://streams.atlassian.com/syndication/icon' title='Story' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/update</activity:verb>
+    <activity:object>
+      <id>urn:uuid:0ecfbd58-4a2e-3c95-a64f-8f491a7fc8d2</id>
+      <title type='text'>TNXIIF-874</title>
+      <summary type='text'>StoryIssueCauseForUnsupportedFeatures</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNXIIF-874' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:object>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/' xmlns:thr='http://purl.org/syndication/thread/1.0'>
+    <id>urn:uuid:8715f3ae-3a6b-3b0c-a110-24105c96cdb7</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msww" class="activity-item-user activity-item-author">Matthew Wightman&lt;/a> commented on       &lt;a href="https://jira.int.corefiling.com/browse/TNFC-1480">TNFC-1480 - TNFC causes tomcat to eventually become unresponsive for BNM&lt;/a>
+  </title>
+    <summary type='html'>&lt;blockquote>
+   &lt;p>Results of this mornings investigation to attempt to reproduce the failure before trying the HEAD build:&lt;/p>
+
+&lt;p>Trying to reproduce this by running a TNWSP locally (with TNFC 1.8.0), each time I repost the TNWSP config and then generate an empty form the&lt;/p>   &lt;a class="comment-more" href="https://jira.int.corefiling.com/browse/TNFC-1480?focusedCommentId=380294&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380294">Read more&lt;/a>&lt;/blockquote>
+</summary>
+    <content type='html'>&lt;blockquote>
+   &lt;p>Results of this mornings investigation to attempt to reproduce the failure before trying the HEAD build:&lt;/p>
+
+&lt;p>Trying to reproduce this by running a TNWSP locally (with TNFC 1.8.0), each time I repost the TNWSP config and then generate an empty form the JVM spawns a new daemon thread called &amp;quot;tnfc.com.google.inject.internal.util.$Finalizer&amp;quot;. &lt;/p>
+
+&lt;p>The local tomcat logs have a number of lines like &amp;quot;SEVERE: The web application &lt;span class="error">[/tnwsp]&lt;/span> appears to have started a thread named &lt;span class="error">[tnfc.com.google.inject.internal.util.$Finalizer]&lt;/span> but has failed to stop it. This is very likely to create a memory leak.&amp;quot;&lt;/p>
+
+&lt;p>After around 13-14 reposts of the TNWSP config locally, generating the forms starts taking a lot longer, with stack traces including tnfc.org.apache.poi.xssf.usermodel.XSSFSheet.getColumnWidth.&lt;/p>   &lt;/blockquote>
+</content>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Matthew Wightman</name>
+      <email>msww@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=msww</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>msww</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-10-30T14:13:56.871Z</published>
+    <updated>2014-10-30T14:13:56.871Z</updated>
+    <category term='comment' />
+    <link href='https://jira.int.corefiling.com/browse/TNFC-1480?focusedCommentId=380294&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380294' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <thr:in-reply-to ref='urn:uuid:928ebe76-2bc2-39dc-a391-86175b6c41e1' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <id>urn:uuid:26c4e1df-c461-3582-a259-5059f224478d</id>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1480?focusedCommentId=380294&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380294' rel='alternate' />
+      <activity:object-type>http://activitystrea.ms/schema/1.0/comment</activity:object-type>
+    </activity:object>
+    <activity:target>
+      <id>urn:uuid:928ebe76-2bc2-39dc-a391-86175b6c41e1</id>
+      <title type='text'>TNFC-1480</title>
+      <summary type='text'>TNFC causes tomcat to eventually become unresponsive for BNM</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1480' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:target>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+</feed>

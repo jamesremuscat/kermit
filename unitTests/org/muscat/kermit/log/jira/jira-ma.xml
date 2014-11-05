@@ -1,0 +1,79 @@
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:atlassian='http://streams.atlassian.com/syndication/general/1.0'>
+  <id>https://jira.int.corefiling.com/activity?maxResults=5</id>
+  <link href='https://jira.int.corefiling.com/activity?maxResults=5' rel='self' />
+  <title type='text'>Activity Streams</title>
+  <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  <updated>2014-11-05T11:53:57.805Z</updated>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/'>
+    <id>urn:uuid:eaa994ea-481e-3b1c-9e63-35682288de20</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ma" class="activity-item-user activity-item-author">Matthew Allen&lt;/a> changed the status to Verified on       &lt;a href="https://jira.int.corefiling.com/browse/TNFC-1465">&lt;span class='resolved-link'>TNFC-1465&lt;/span> - TNSQLC subtly fails for unsupported databases&lt;/a>
+  </title>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Matthew Allen</name>
+      <email>ma@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ma</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>ma</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-11-05T11:45:50.696Z</published>
+    <updated>2014-11-05T11:45:50.696Z</updated>
+    <category term='Verified' />
+    <link href='https://jira.int.corefiling.com/browse/TNFC-1465' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/update</activity:verb>
+    <activity:verb>http://streams.atlassian.com/syndication/verbs/jira/transition</activity:verb>
+    <activity:object>
+      <id>urn:uuid:3d878f8a-e561-3487-a80d-868f79b293e5</id>
+      <title type='text'>TNFC-1465</title>
+      <summary type='text'>TNSQLC subtly fails for unsupported databases</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1465' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:object>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+  <entry xmlns:activity='http://activitystrea.ms/spec/1.0/' xmlns:thr='http://purl.org/syndication/thread/1.0'>
+    <id>urn:uuid:22d33be3-6e12-33fb-aed0-dc3f7bdde900</id>
+    <title type='html'>&lt;a href="https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ma" class="activity-item-user activity-item-author">Matthew Allen&lt;/a> commented on       &lt;a href="https://jira.int.corefiling.com/browse/TNFC-1465">&lt;span class='resolved-link'>TNFC-1465&lt;/span> - TNSQLC subtly fails for unsupported databases&lt;/a>
+  </title>
+    <content type='html'>&lt;blockquote>
+   &lt;p>Verified as FIXED in r422114.&lt;/p>   &lt;/blockquote>
+</content>
+    <author xmlns:usr='http://streams.atlassian.com/syndication/username/1.0'>
+      <name>Matthew Allen</name>
+      <email>ma@corefiling.com</email>
+      <uri>https://jira.int.corefiling.com/secure/ViewProfile.jspa?name=ma</uri>
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=16' media:height='16' media:width='16' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <link href='https://jira.int.corefiling.com/secure/useravatar?avatarId=10122&amp;s=48' media:height='48' media:width='48' rel='photo' xmlns:media='http://purl.org/syndication/atommedia' />
+      <usr:username>ma</usr:username>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <published>2014-11-05T11:45:49.309Z</published>
+    <updated>2014-11-05T11:45:49.309Z</updated>
+    <category term='comment' />
+    <link href='https://jira.int.corefiling.com/browse/TNFC-1465?focusedCommentId=380568&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380568' rel='alternate' />
+    <link href='https://jira.int.corefiling.com/images/icons/issuetypes/bug.png' rel='http://streams.atlassian.com/syndication/icon' title='Bug' />
+    <link href='https://jira.int.corefiling.com/s/en_GBkymf5z-1988229788/6265/7/1.0/_/download/resources/jira.webresources:global-static/wiki-renderer.css' rel='http://streams.atlassian.com/syndication/css' />
+    <thr:in-reply-to ref='urn:uuid:3d878f8a-e561-3487-a80d-868f79b293e5' />
+    <generator uri='https://jira.int.corefiling.com' />
+    <atlassian:application>com.atlassian.jira</atlassian:application>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <id>urn:uuid:644683ab-ca80-3d5d-857c-cca016cee92a</id>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1465?focusedCommentId=380568&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-380568' rel='alternate' />
+      <activity:object-type>http://activitystrea.ms/schema/1.0/comment</activity:object-type>
+    </activity:object>
+    <activity:target>
+      <id>urn:uuid:3d878f8a-e561-3487-a80d-868f79b293e5</id>
+      <title type='text'>TNFC-1465</title>
+      <summary type='text'>TNSQLC subtly fails for unsupported databases</summary>
+      <link href='https://jira.int.corefiling.com/browse/TNFC-1465' rel='alternate' />
+      <activity:object-type>http://streams.atlassian.com/syndication/types/issue</activity:object-type>
+    </activity:target>
+    <atlassian:timezone-offset>+0000</atlassian:timezone-offset>
+  </entry>
+</feed>

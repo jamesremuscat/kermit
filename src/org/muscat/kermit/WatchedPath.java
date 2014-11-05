@@ -3,6 +3,7 @@ package org.muscat.kermit;
 import org.muscat.kermit.log.LogWatcher;
 import org.muscat.kermit.log.devstats.StoryStateWatcher;
 import org.muscat.kermit.log.hg.HgLogWatcher;
+import org.muscat.kermit.log.jira.JiraWatcher;
 import org.muscat.kermit.log.quips.QuipsAtomFeedWatcher;
 import org.muscat.kermit.log.reviki.RevikiRecentChangesWatcher;
 import org.muscat.kermit.log.svn.SVNLogWatcher;
@@ -97,6 +98,12 @@ public class WatchedPath {
         return new RevikiRecentChangesWatcher(path);
       }
     },
+    JIRA {
+      @Override
+      public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
+        return new JiraWatcher(path);
+      }
+    },
     QUIPS {
       @Override
       public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
@@ -124,6 +131,9 @@ public class WatchedPath {
       }
       if ("hg".equalsIgnoreCase(s)) {
         return HG;
+      }
+      if ("jira".equalsIgnoreCase(s)) {
+        return JIRA;
       }
       if ("reviki".equalsIgnoreCase(s)) {
         return REVIKI;
