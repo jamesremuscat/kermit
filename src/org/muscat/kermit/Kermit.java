@@ -132,7 +132,7 @@ public final class Kermit extends PircBot implements LogListener {
 
         if (!entry.getChangedPaths().isEmpty()) {
           final String path = extractPaths(entry);
-          final long numSpaces = Math.round(Math.floor(entry.getChangeID().length()));
+          final long numSpaces = entry.getPathSpaces();
 
           sendMessage(chan, StringUtils.spaces((int) (numSpaces + 1)) + Colors.DARK_GRAY + "in " + path + Colors.NORMAL);
         }

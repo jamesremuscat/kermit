@@ -69,6 +69,11 @@ public class QuipsAtomFeedWatcher extends AtomLogWatcher {
       return Collections.emptySet();
     }
 
+    @Override
+    public int getPathSpaces() {
+      return 0;
+    }
+
   }
 
 }

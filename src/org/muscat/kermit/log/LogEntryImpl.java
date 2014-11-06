@@ -41,6 +41,11 @@ public class LogEntryImpl implements LogEntry {
   }
 
   @Override
+  public int getPathSpaces() {
+    return (int) Math.round(Math.floor(getChangeID().length()));
+  }
+
+  @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;

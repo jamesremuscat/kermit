@@ -52,4 +52,9 @@ public class JiraLogEntry implements LogEntry {
     return Collections.singleton(_url);
   }
 
+  @Override
+  public int getPathSpaces() {
+    return _objectTitle.length();
+  }
+
 }

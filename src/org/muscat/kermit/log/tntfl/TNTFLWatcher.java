@@ -151,6 +151,11 @@ public class TNTFLWatcher extends LogWatcher {
       return Collections.emptySet();
     }
 
+    @Override
+    public int getPathSpaces() {
+      return 0;
+    }
+
   }
 
 }
