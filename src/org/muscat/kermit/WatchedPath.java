@@ -1,7 +1,6 @@
 package org.muscat.kermit;
 
 import org.muscat.kermit.log.LogWatcher;
-import org.muscat.kermit.log.devstats.StoryStateWatcher;
 import org.muscat.kermit.log.hg.HgLogWatcher;
 import org.muscat.kermit.log.jira.JiraWatcher;
 import org.muscat.kermit.log.quips.QuipsAtomFeedWatcher;
@@ -110,12 +109,6 @@ public class WatchedPath {
         return new QuipsAtomFeedWatcher(path);
       }
     },
-    STORYSTATS {
-      @Override
-      public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
-        return new StoryStateWatcher(path);
-      }
-    },
     TNTFL {
       @Override
       public LogWatcher getWatcher(final WatchedPath path) throws PathWatcherException {
@@ -140,9 +133,6 @@ public class WatchedPath {
       }
       if ("quips".equalsIgnoreCase(s)) {
         return QUIPS;
-      }
-      if ("stories".equalsIgnoreCase(s)) {
-        return STORYSTATS;
       }
       if ("tntfl".equalsIgnoreCase(s)) {
         return TNTFL;
