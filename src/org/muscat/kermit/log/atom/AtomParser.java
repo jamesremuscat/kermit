@@ -98,7 +98,7 @@ public class AtomParser extends DefaultHandler {
         _revision = _url.substring(_url.indexOf('?') + 1 + "revision=".length());
       }
       if (_url.contains(CHANGESET_TAG)) {
-        _revision = _url.substring(_url.indexOf(CHANGESET_TAG)).substring(CHANGESET_TAG.length() + 1).substring(0, 12);
+        _revision = _url.substring(_url.indexOf(CHANGESET_TAG)).substring(CHANGESET_TAG.length()).substring(0, 12);
       }
     }
     else if ("updated".equals(localName)) {
