@@ -22,11 +22,13 @@ import com.google.gson.reflect.TypeToken;
 
 public class TNTFLWatcher extends LogWatcher {
 
-  private final Set<SubmittedGame> _lastGames = new LinkedHashSet<SubmittedGame>();
+  private long _mostRecentGame = 0;
 
   public TNTFLWatcher(final WatchedPath path) {
     super(path);
-    _lastGames.addAll(getRecentGames(path.getPath()));
+    for (final SubmittedGame g: getRecentGames(path.getPath())) {
+      _mostRecentGame = Math.max(_mostRecentGame, g.getDateTime().getTime());
+    }
   }
 
   @Override
@@ -41,15 +43,13 @@ public class TNTFLWatcher extends LogWatcher {
     final Set<LogEntry> newScores = new LinkedHashSet<LogEntry>();
 
     for (final SubmittedGame g : newGames) {
-      if (!_lastGames.contains(g)) {
+      if (g.getDateTime().getTime() > _mostRecentGame) {
         newScores.add(new FinalScore(g));
+        _mostRecentGame = g.getDateTime().getTime();
       }
     }
 
     notifyAllListeners(newScores);
-
-    _lastGames.clear();
-    _lastGames.addAll(newGames);
 
   }
 
