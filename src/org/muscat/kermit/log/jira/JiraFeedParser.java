@@ -125,7 +125,7 @@ public class JiraFeedParser extends DefaultHandler {
   }
 
   private static String prepareHTMLContent(final String html) {
-    return StringEscapeUtils.unescapeXml(html.replaceAll("<[^>]*>", "").replaceAll(" +", " ").replaceAll("\n", "").trim());
+    return StringEscapeUtils.unescapeXml(html.replaceAll("<[^>]*>", "").replaceAll("\n+", " ").replaceAll(" +", " ").trim());
   }
 
   @Override
