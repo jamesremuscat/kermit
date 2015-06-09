@@ -16,6 +16,12 @@ public class SubmittedGame extends Game {
   private Player _skillChangeDirection;
   private Date _dateTime;
 
+  private int _redRankChange;
+  private int _blueRankChange;
+
+  private int _redNewRank;
+  private int _blueNewRank;
+
   public float getSkillChange() {
     return _skillChange;
   }
@@ -33,6 +39,21 @@ public class SubmittedGame extends Game {
   }
   public void setDateTime(final Date dateTime) {
     _dateTime = dateTime;
+  }
+
+  public int getRankChange(final Player player) {
+    if (player == Player.BLUE) {
+      return _blueRankChange;
+    }
+    return _redRankChange;
+  }
+
+
+  public int getNewRank(final Player player) {
+    if (player == Player.BLUE) {
+      return _blueNewRank;
+    }
+    return _redNewRank;
   }
 
 
@@ -86,31 +107,24 @@ public class SubmittedGame extends Game {
     g.setBluePlayer(bluePlayer.get("name").getAsString());
     g.setBlueScore(bluePlayer.get("score").getAsInt());
 
-    if (o.has("skillChange")) { // nicer version of JSON
-      final JsonObject skill = o.get("skillChange").getAsJsonObject();
-      g.setSkillChange(skill.get("change").getAsFloat());
-
-      final String towards = skill.get("towards").getAsString();
-      if ("red".equalsIgnoreCase(towards)) {
-        g.setSkillChangeDirection(Player.RED);
-      }
-      else if ("blue".equalsIgnoreCase(towards)) {
-        g.setSkillChangeDirection(Player.BLUE);
-      }
+    final float redSkill = redPlayer.get("skillChange").getAsFloat();
+    final float blueSkill = bluePlayer.get("skillChange").getAsFloat();
+    if (redSkill > 0) {
+      g.setSkillChangeDirection(Player.RED);
+      g.setSkillChange(redSkill);
     }
-    else if (redPlayer.has("skillChange")) { // older version of JSON
-      final float redSkill = redPlayer.get("skillChange").getAsFloat();
-      final float blueSkill = bluePlayer.get("skillChange").getAsFloat();
-      if (redSkill > 0) {
-        g.setSkillChangeDirection(Player.RED);
-        g.setSkillChange(redSkill);
-      }
-      else if (blueSkill > 0) {
-        g.setSkillChangeDirection(Player.BLUE);
-        g.setSkillChange(blueSkill);
-      }
-
+    else if (blueSkill > 0) {
+      g.setSkillChangeDirection(Player.BLUE);
+      g.setSkillChange(blueSkill);
     }
+
+    if (redPlayer.has("rankChange")) {
+      g._redRankChange = redPlayer.get("rankChange").getAsInt();
+      g._blueRankChange = bluePlayer.get("rankChange").getAsInt();
+      g._redNewRank = redPlayer.get("newRank").getAsInt();
+      g._blueNewRank = bluePlayer.get("newRank").getAsInt();
+    }
+
 
     if (o.has("date")) {
       g.setDateTime(new Date(o.get("date").getAsLong() * 1000));
@@ -130,5 +144,4 @@ public class SubmittedGame extends Game {
     }
 
   }
-
 }

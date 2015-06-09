@@ -21,6 +21,12 @@ public class TestTNTFLFeedParser extends TestCase {
     assertEquals("tmm", game.getRedPlayer());
 
     assertEquals(Player.RED, game.getSkillChangeDirection());
+
+    assertEquals(1, game.getRankChange(Player.RED));
+    assertEquals(0, game.getRankChange(Player.BLUE));
+
+    assertEquals(13, game.getNewRank(Player.RED));
+    assertEquals(10, game.getNewRank(Player.BLUE));
   }
 
 }

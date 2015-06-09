@@ -18,22 +18,15 @@
     "positionSwap": false,
     "date": 1433852883
 }, {
-    "red": {
-        "name": "njlgad",
-        "href": "../player/njlgad/json",
-        "score": 4,
-        "skillChange": -2.10460603842,
-        "rankChange": 0,
-        "newRank": 4
-    },
-    "blue": {
-        "name": "msh",
-        "href": "../player/msh/json",
-        "score": 6,
-        "skillChange": 2.10460603842,
-        "rankChange": 0,
-        "newRank": 2
-    },
-    "positionSwap": false,
-    "date": 1433852163
+  "red" : {
+    "name" : "jwl",
+    "score" : 5,
+    "skillChange" : -2.14233699163
+  },
+  "blue" : {
+    "name" : "sjs",
+    "score" : 5,
+    "skillChange" : 2.14233699163
+  },
+  "date" : 1433864657
 }]
