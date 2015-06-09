@@ -1,8 +1,9 @@
 package org.muscat.kermit.log.tntfl;
 
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
@@ -53,14 +54,16 @@ public class TNTFLWatcher extends LogWatcher {
 
   }
 
-  private static List<SubmittedGame> getRecentGames(final String url) {
+  static List<SubmittedGame> getRecentGames(final Reader r) {
     final GsonBuilder gb = new GsonBuilder();
     gb.registerTypeAdapter(SubmittedGame.class, new SubmittedGame.SubmittedGameDeserializer());
 
     final Gson g = gb.create();
 
     try {
-      return g.fromJson(getText(url), new TypeToken<List<SubmittedGame>>(){ /* */ }.getType());
+      final List<SubmittedGame> result = g.fromJson(r, new TypeToken<List<SubmittedGame>>(){ /* */ }.getType());
+      r.close();
+      return result;
     }
     catch (final JsonSyntaxException e) {
       e.printStackTrace();
@@ -68,27 +71,24 @@ public class TNTFLWatcher extends LogWatcher {
     catch (final IOException e) {
       e.printStackTrace();
     }
-
     return Collections.emptyList();
   }
 
-  private static String getText(final String url) throws IOException {
-    final URL website = new URL(url);
-    final URLConnection connection = website.openConnection();
-    final BufferedReader in = new BufferedReader(
-        new InputStreamReader(
-            connection.getInputStream()));
+  private static List<SubmittedGame> getRecentGames(final String url) {
 
-    final StringBuilder response = new StringBuilder();
-    String inputLine;
+    try {
+      final URL actualUrl = new URL(url);
 
-    while ((inputLine = in.readLine()) != null) {
-      response.append(inputLine);
+      final URLConnection connection = actualUrl.openConnection();
+      final InputStream inputStream = connection.getInputStream();
+
+      return getRecentGames(new InputStreamReader(inputStream));
+    }
+    catch (final IOException e) {
+      e.printStackTrace();
     }
 
-    in.close();
-
-    return response.toString();
+    return Collections.emptyList();
   }
 
   private static class FinalScore implements LogEntry {

@@ -1,0 +1,39 @@
+[{
+    "red": {
+        "name": "tmm",
+        "href": "../player/tmm/json",
+        "score": 6,
+        "skillChange": 5.20695424021,
+        "rankChange": 1,
+        "newRank": 13
+    },
+    "blue": {
+        "name": "sjs",
+        "href": "../player/sjs/json",
+        "score": 4,
+        "skillChange": -5.20695424021,
+        "rankChange": 0,
+        "newRank": 10
+    },
+    "positionSwap": false,
+    "date": 1433852883
+}, {
+    "red": {
+        "name": "njlgad",
+        "href": "../player/njlgad/json",
+        "score": 4,
+        "skillChange": -2.10460603842,
+        "rankChange": 0,
+        "newRank": 4
+    },
+    "blue": {
+        "name": "msh",
+        "href": "../player/msh/json",
+        "score": 6,
+        "skillChange": 2.10460603842,
+        "rankChange": 0,
+        "newRank": 2
+    },
+    "positionSwap": false,
+    "date": 1433852163
+}]
